@@ -1,0 +1,1004 @@
+
+
+
+<!DOCTYPE html> 	
+<html lang="zh-Hant-TW"> 
+  <head> 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131550332-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-131550332-1');
+</script>
+
+
+        <title>梁社漢排骨:::兩岸十大名廚●精緻美味便當</title>         
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+         <link rel="stylesheet" href="css/bootstrap_bg.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>         
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <style>/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+    margin-bottom: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}</style>         
+      
+<style>
+
+	.panel-group .panel {
+		border-radius: 5px;
+		border-color: #EEEEEE;
+        padding:0;
+	}
+
+	.panel-default > .panel-heading {
+		color: #fff;
+		background-color: #A33843;
+		border-color: #EEEEEE;
+	}
+
+	.panel-title {
+		font-size: 14px;
+	}
+
+	.panel-title > a {
+		display: block;
+		padding: 15px;
+		text-decoration: none;
+	}
+
+	.short-full {
+		float: right;
+		color: #fff;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border: solid 1px #EEEEEE;
+        background-color:white;
+        
+	}
+
+
+
+
+</style>       
+        <script>
+    // 定義台灣縣市及其對應的區域
+    var taiwanData = {
+       "基隆市": ["基隆市全區","仁愛區", "信義區", "中正區", "中山區", "安樂區", "暖暖區", "七堵區"],
+  "台北市": ["台北市全區","中正區", "大同區", "中山區", "松山區", "大安區", "萬華區", "信義區", "士林區", "北投區", "內湖區", "南港區", "文山區"],
+  "新北市": [
+    "新北市全區","板橋區", "三重區", "中和區", "永和區", "新莊區", "新店區", "樹林區", "鶯歌區", "三峽區", "淡水區",
+    "汐止區", "瑞芳區", "土城區", "蘆洲區", "五股區", "泰山區", "林口區", "深坑區", "石碇區", "坪林區",
+    "三芝區", "石門區", "八里區", "平溪區", "雙溪區", "貢寮區", "金山區", "萬里區", "烏來區"
+  ],
+  "桃園市": [
+     "桃園市全區","桃園區", "中壢區", "平鎮區", "八德區", "楊梅區", "蘆竹區", "大溪區", "龍潭區", "龜山區", "大園區",
+    "觀音區", "新屋區", "復興區"
+  ],
+  "新竹市": [ "新竹市全區","東區", "北區", "香山區"],
+  "新竹縣": [
+     "新竹縣全區","竹北市", "竹東鎮", "新埔鎮", "關西鎮", "湖口鄉", "新豐鄉", "峨眉鄉", "寶山鄉", "北埔鄉",
+    "芎林鄉", "橫山鄉", "尖石鄉", "五峰鄉"
+  ],
+  "苗栗縣": [
+     "苗栗縣全區","苗栗市", "頭份市", "竹南鎮", "後龍鎮", "通霄鎮", "苑裡鎮", "卓蘭鎮", "造橋鄉", "西湖鄉",
+    "頭屋鄉", "公館鄉", "三義鄉", "大湖鄉", "獅潭鄉", "三灣鄉", "南庄鄉", "泰安鄉"
+  ],
+  "台中市": [
+     "台中市全區","中區", "東區", "南區", "西區", "北區", "北屯區", "西屯區", "南屯區", "太平區",
+    "大里區", "霧峰區", "烏日區", "豐原區", "后里區", "石岡區", "東勢區", "和平區",
+    "新社區", "潭子區", "大雅區", "神岡區", "大肚區", "沙鹿區", "龍井區", "梧棲區",
+    "清水區", "大甲區", "外埔區", "大安區"
+  ],
+  "彰化縣": [
+     "彰化縣全區","彰化市", "員林市", "和美鎮", "鹿港鎮", "溪湖鎮", "二林鎮", "田中鎮", "北斗鎮",
+    "花壇鄉", "芬園鄉", "大村鄉", "永靖鄉", "伸港鄉", "線西鄉", "福興鄉", "秀水鄉",
+    "埔心鄉", "埔鹽鄉", "大城鄉", "芳苑鄉", "竹塘鄉", "社頭鄉", "二水鄉", "田尾鄉",
+    "埤頭鄉", "溪州鄉"
+  ],
+  "南投縣": [
+     "南投縣全區","南投市", "埔里鎮", "草屯鎮", "竹山鎮", "集集鎮", "名間鄉", "鹿谷鄉", "中寮鄉",
+    "魚池鄉", "國姓鄉", "水里鄉", "信義鄉", "仁愛鄉"
+  ],
+  "雲林縣": [
+     "雲林縣全區","斗六市", "斗南鎮", "虎尾鎮", "西螺鎮", "土庫鎮", "北港鎮", "林內鄉", "古坑鄉",
+    "大埤鄉", "莿桐鄉", "褒忠鄉", "二崙鄉", "崙背鄉", "麥寮鄉", "台西鄉", "元長鄉", "四湖鄉", "口湖鄉", "水林鄉"
+  ],
+  "嘉義市": [ "嘉義市全區","東區", "西區"],
+  "嘉義縣": [
+     "嘉義縣全區","太保市", "朴子市", "布袋鎮", "大林鎮", "民雄鄉", "溪口鄉", "新港鄉", "六腳鄉",
+    "東石鄉", "義竹鄉", "鹿草鄉", "水上鄉", "中埔鄉", "竹崎鄉", "梅山鄉", "番路鄉",
+    "大埔鄉", "阿里山鄉"
+  ],
+  "台南市": [
+     "台南市全區","中西區", "東區", "南區", "北區", "安平區", "安南區", "永康區", "歸仁區", "新化區",
+    "左鎮區", "玉井區", "楠西區", "南化區", "仁德區", "關廟區", "龍崎區", "官田區", "麻豆區",
+    "佳里區", "西港區", "七股區", "將軍區", "學甲區", "北門區", "新營區", "後壁區", "白河區",
+    "東山區", "六甲區", "下營區", "柳營區", "鹽水區", "善化區", "大內區", "山上區", "新市區",
+    "安定區"
+  ],
+  "高雄市": [
+     "高雄市全區","楠梓區", "左營區", "鼓山區", "三民區", "鹽埕區", "前金區", "新興區", "苓雅區", "前鎮區",
+    "旗津區", "小港區", "鳳山區", "林園區", "大寮區", "大樹區", "大社區", "仁武區", "鳥松區",
+    "岡山區", "橋頭區", "燕巢區", "田寮區", "阿蓮區", "路竹區", "湖內區", "茄萣區", "永安區",
+    "彌陀區", "梓官區", "旗山區", "美濃區", "六龜區", "甲仙區", "杉林區", "內門區", "茂林區", "桃源區", "那瑪夏區"
+  ],
+  "屏東縣": [
+     "屏東縣全區","屏東市", "潮州鎮", "東港鎮", "恆春鎮", "萬丹鄉", "長治鄉", "麟洛鄉", "九如鄉",
+    "里港鄉", "鹽埔鄉", "高樹鄉", "萬巒鄉", "內埔鄉", "竹田鄉", "新埤鄉", "枋寮鄉",
+    "新園鄉", "崁頂鄉", "林邊鄉", "南州鄉", "佳冬鄉", "琉球鄉", "車城鄉", "滿州鄉",
+    "枋山鄉", "三地門鄉", "霧臺鄉", "瑪家鄉", "泰武鄉", "來義鄉", "春日鄉", "獅子鄉",
+    "牡丹鄉"
+  ],
+  "宜蘭縣": [
+     "宜蘭縣全區","宜蘭市", "羅東鎮", "蘇澳鎮", "頭城鎮", "礁溪鄉", "壯圍鄉", "員山鄉", "冬山鄉",
+    "五結鄉", "三星鄉", "大同鄉", "南澳鄉"
+  ],
+  "台東縣": [
+     "台東縣全區","台東市", "成功鎮", "關山鎮", "長濱鄉", "池上鄉", "東河鄉", "鹿野鄉", "卑南鄉",
+    "大武鄉", "綠島鄉", "太麻里鄉", "海端鄉", "延平鄉", "金峰鄉", "達仁鄉", "蘭嶼鄉"
+  ],
+  "花蓮縣": [
+     "花蓮縣全區","花蓮市", "鳳林鎮", "玉里鎮", "新城鄉", "吉安鄉", "壽豐鄉", "光復鄉", "豐濱鄉",
+    "瑞穗鄉", "富里鄉", "秀林鄉", "萬榮鄉", "卓溪鄉"
+  ],
+  "金門縣": [
+     "金門縣全區","金城鎮", "金湖鎮", "金沙鎮", "金寧鄉", "烈嶼鄉", "烏坵鄉"
+  ],
+  "連江縣": [
+     "連江縣全區","南竿鄉", "北竿鄉", "莒光鄉", "東引鄉"
+  ],
+  "澎湖縣": [
+    "澎湖縣全區", "馬公市", "湖西鄉", "白沙鄉", "西嶼鄉", "望安鄉", "七美鄉"
+  ]
+};
+   
+
+    // 當縣市下拉選單的值改變時觸發此函數
+    function onCityChange() {
+      var citySelect = document.getElementById("citySelect");
+      var areaSelect = document.getElementById("areaSelect");
+      var selectedCity = citySelect.value;
+
+      // 清空區域下拉選單的選項
+      areaSelect.innerHTML = "";
+
+      // 根據選擇的縣市，動態新增對應的區域選項
+      if (selectedCity !== "") {
+        var areas = taiwanData[selectedCity];
+        for (var i = 0; i < areas.length; i++) {
+          var option = document.createElement("option");
+          option.text = areas[i];
+          option.value = areas[i];
+          areaSelect.appendChild(option);
+        }
+      }
+    }
+  </script>
+    </head>       
+    <body style="background-color:#A33843"> 
+       
+           <nav class="navbar navbar-inverse navbar-fixed-top" > 
+          <div class="container">
+	<img src="images/LOGO.png" alt="logo">
+</div>
+
+<div class="container">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="http://bit.ly/2OcO8cN" target="_blank"><i class="fa fa-facebook-square"></i></a>
+		<a class="navbar-brand" href="car.asp"><span class="glyphicon glyphicon-shopping-cart"></span> 餐車  <span class="badge">0</span></a>
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="index.asp?t=1">最新消息</a>
+			</li>
+			<li>
+				<a href="story.asp?t=2">品牌故事</a>
+			</li>
+			<li>
+				<a href="index0106.asp?t=3">美味餐點</a>
+			</li>
+			<li class="active">
+				<a href="StoreList.asp?t=4">門店資訊</a>
+			</li>
+			<li>
+				<a href="cshop.asp?t=5">線上訂餐</a>
+			</li>
+			<li>
+				<a href="Note.asp?t=6">線上訂餐說明</a>
+			</li>
+            <li>
+				<a href="joinus.asp?t=7">加入我們</a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="login.asp"><span class="glyphicon glyphicon-user"></span>會員登入</a>
+			</li>
+
+			<li>
+				<a href="car.asp"><span class="glyphicon glyphicon-shopping-cart"></span> 餐車 <span class="badge">0</span></a>
+			</li>
+		</ul>
+	</div>
+</div>                
+        </nav>        
+                 <nav class="navbar navbar-inverse" style="background-color: white;height:auto;"> 
+       <div class="container" style="padding-left:30px;padding-top:150px;padding-bottom:10em;"> 
+<div class="row">
+     <h2><b>門店資訊</b></h2>
+   
+     <hr />
+     
+     
+                
+  
+	
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"  style="width:98%;">
+  <!--	<p id="demo" style="color:white"></p>
+        <button class="btn btn-danger" onclick="getLocation()">使用GPS定位查詢離您最近的門店</button>
+        <hr />-->
+        <h3>選擇縣市區域查詢門店：</h3>
+  <form action="StoreList.asp" method="post" >
+  <label for="citySelect">縣市：</label>
+  <select id="citySelect" name="citySelect" onchange="onCityChange()" class="form-control" style="width:120px;">
+    <option value="">請選擇縣市</option>
+    <option value="基隆市">基隆市</option>
+	<option value="台北市">台北市</option>
+	<option value="新北市">新北市</option>
+	<option value="桃園市">桃園市</option>
+	<option value="新竹市">新竹市</option>
+	<option value="新竹縣">新竹縣</option>
+	<option value="苗栗縣">苗栗縣</option>
+	<option value="台中市">台中市</option>
+	<option value="彰化縣">彰化縣</option>
+	<option value="南投縣">南投縣</option>
+	<option value="雲林縣">雲林縣</option>
+	<option value="嘉義市">嘉義市</option>
+	<option value="嘉義縣">嘉義縣</option>
+	<option value="台南市">台南市</option>
+	<option value="高雄市">高雄市</option>
+	<option value="屏東縣">屏東縣</option>
+	<option value="宜蘭縣">宜蘭縣</option>
+	<option value="台東縣">台東縣</option>
+	<option value="花蓮縣">花蓮縣</option>
+	<option value="金門縣">金門縣</option>	
+	
+  </select>
+
+    
+  <label for="areaSelect">區域：</label>
+  <select id="areaSelect" name="SArea"  class="form-control" style="width:150px;">
+    <option value="" >請先選擇縣市</option>
+  </select>
+      <br />
+        <input id="Submit1" type="submit" value="送出查詢"  class="form-control" style="width:100px;" />
+            </form>
+    </div>              
+                    				       
+       
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">中正南昌店 [<a href="Stores.asp?Shop_id=100001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23432361">02-23432361</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中正區南昌路一段153號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中正區南昌路一段153號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">中正濟南店 [<a href="Stores.asp?Shop_id=100002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23946074">02-23946074</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中正區濟南路二段61-1號一樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中正區濟南路二段61-1號一樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">中正廣州店 [<a href="Stores.asp?Shop_id=100003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23117709">02-23117709</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中正區廣州街10-7號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中正區廣州街10-7號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">善導寺店 [<a href="Stores.asp?Shop_id=100004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23414066">02-23414066</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中正區忠孝東路一段11之2號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中正區忠孝東路一段11之2號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">中山龍江店 [<a href="Stores.asp?Shop_id=104003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-25165922">02-25165922</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中山區龍江路330號一樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中山區龍江路330號一樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">中山大直店 [<a href="Stores.asp?Shop_id=104004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-25320642">02-25320642</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中山區大直街3號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中山區大直街3號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">松山民生店 [<a href="Stores.asp?Shop_id=105001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27480421">02-27480421</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市松山區民生東路五段238號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市松山區民生東路五段238號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">忠孝東店 [<a href="Stores.asp?Shop_id=106001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-87718510">02-87718510</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大安區忠孝東路四段216巷27弄4號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大安區忠孝東路四段216巷27弄4號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">台大店 [<a href="Stores.asp?Shop_id=106003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23694938">02-23694938</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大安區大學里羅斯福路3段333巷11號1樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大安區大學里羅斯福路3段333巷11號1樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">大安金山南店 [<a href="Stores.asp?Shop_id=106005">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23222887">02-23222887</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-21:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大安區金山南路二段109號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大安區金山南路二段109號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">永吉店 [<a href="Stores.asp?Shop_id=110001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27660657">02-27660657</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市信義區永吉路282號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市信義區永吉路282號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">信安店 [<a href="Stores.asp?Shop_id=110003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-87320989">02-87320989</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市信義區信安街149號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市信義區信安街149號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">信義光復店 [<a href="Stores.asp?Shop_id=110005">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27589470">02-27589470</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市信義區信義路四段375號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市信義區信義路四段375號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">信義世貿店 [<a href="Stores.asp?Shop_id=110006">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27588382">02-27588382</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市信義區莊敬路202號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市信義區莊敬路202號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">忠誠店 [<a href="Stores.asp?Shop_id=111001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28348596">02-28348596</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市士林區忠誠路二段78號1樓A戶</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市士林區忠誠路二段78號1樓A戶" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">芝山福國店 [<a href="Stores.asp?Shop_id=111003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28330039">02-28330039</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-21:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市士林區福國路60號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市士林區福國路60號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">士林前港店 [<a href="Stores.asp?Shop_id=111004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28810037">02-28810037</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-21:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市士林區前港街37號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市士林區前港街37號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">北投大業店 [<a href="Stores.asp?Shop_id=112001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28911762">02-28911762</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市北投區中央北路一段206號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市北投區中央北路一段206號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">石牌明德店 [<a href="Stores.asp?Shop_id=112002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28230052">02-28230052</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市北投區明德路107號1樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市北投區明德路107號1樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">瑞光店 [<a href="Stores.asp?Shop_id=114001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-26597266">02-26597266</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區瑞光路281號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區瑞光路281號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">內湖葫洲店 [<a href="Stores.asp?Shop_id=114003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-26319983">02-26319983</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區民權東路六段300號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區民權東路六段300號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">內湖康寧店 [<a href="Stores.asp?Shop_id=114004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27940566">02-27940566</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區康寧路一段84號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區康寧路一段84號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">內湖民權東店(三民國中對面) [<a href="Stores.asp?Shop_id=114006">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27941383">02-27941383</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區民權東路六段68號一樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區民權東路六段68號一樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">南港興華店 [<a href="Stores.asp?Shop_id=115002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27836445">02-27836445</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市南港區興華路90號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市南港區興華路90號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">文山指南店 [<a href="Stores.asp?Shop_id=116001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-86616465">02-86616465</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市文山區指南路二段127號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市文山區指南路二段127號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">文山羅斯福店 [<a href="Stores.asp?Shop_id=116003">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-29332727">02-29332727</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市文山區羅斯福路六段26號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市文山區羅斯福路六段26號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">民生承德店 [<a href="Stores.asp?Shop_id=103001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-25571223">02-25571223</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-21:00</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大同區民生西路125號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大同區民生西路125號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">重慶北店 [<a href="Stores.asp?Shop_id=103002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-25554198">02-25554198</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大同區重慶北路二段5號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大同區重慶北路二段5號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">晴光店 [<a href="Stores.asp?Shop_id=104001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-25933349">02-25933349</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市中山區農安街13之1號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市中山區農安街13之1號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">松山八德店 [<a href="Stores.asp?Shop_id=105002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27500085">02-27500085</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市松山區八德路二段435號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市松山區八德路二段435號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">大安復興南店 [<a href="Stores.asp?Shop_id=106002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27015630">02-27015630</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大安區復興南路二段277號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大安區復興南路二段277號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">大安一店 [<a href="Stores.asp?Shop_id=106004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27041023">02-27041023</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市大安區大安路一段225號1樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市大安區大安路一段225號1樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">萬華西園店 [<a href="Stores.asp?Shop_id=108001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23090129">02-23090129</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市萬華區西園路二段216號之1</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市萬華區西園路二段216號之1" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">永春店 [<a href="Stores.asp?Shop_id=110004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-23463382">02-23463382</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市信義區信義路六段90號1樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市信義區信義路六段90號1樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">士林中正店 [<a href="Stores.asp?Shop_id=111002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28315981">02-28315981</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市士林區中正路338號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市士林區中正路338號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">石牌店 [<a href="Stores.asp?Shop_id=112004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-28234918">02-28234918</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市北投區石牌路二段6號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市北投區石牌路二段6號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">東湖店 [<a href="Stores.asp?Shop_id=114002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-26315601">02-26315601</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區東湖路148之1號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區東湖路148之1號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">內湖一店 [<a href="Stores.asp?Shop_id=114007">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-27972036">02-27972036</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市內湖區內湖路一段591巷12之2號1樓</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市內湖區內湖路一段591巷12之2號1樓" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">南港店 [<a href="Stores.asp?Shop_id=115001">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-26519352">02-26519352</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市南港區南港路一段134號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市南港區南港路一段134號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">萬芳店 [<a href="Stores.asp?Shop_id=116002">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-22390803">02-22390803</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-22:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市文山區興隆路三段100號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市文山區興隆路三段100號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">文山興隆店 [<a href="Stores.asp?Shop_id=116004">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-29371782">02-29371782</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市文山區興隆路四段98號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市文山區興隆路四段98號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+	
+  
+    
+     
+        <h4><b><font color="#D9534F">木柵三店 [<a href="Stores.asp?Shop_id=116005">線上訂餐</a>] </font></b></h4>
+          
+          <p class="card-text"><i class="fa fa-phone"></i>　訂購專線：<a href="tel:02-29375303">02-29375303</a><br /> <i class="fa fa-clock-o"></i>　營業時間：10:30-20:30</p> 
+        <p class="card-text"><i class="fa fa-map-marker"></i>台灣 台北市文山區木柵路三段98號</p>
+    
+        <a href="https://www.google.com.tw/maps/place/台北市文山區木柵路三段98號" class="btn btn-danger"  target="_blank">查看位置</a>
+ 
+    <hr />
+ 
+           
+                      
+                    
+         
+                    
+				</div>
+	
+<br />
+      
+
+	
+         </div>
+         
+        
+
+</nav>
+ 
+        
+                <nav class="navbar-default" role="navigation" style="background-color:#A33843">
+			<!-- 上下左右都有padding -->
+			<div class="container text-center" style="padding-top:10px;font-size:12px">
+				<p style="color:white">
+					Copyright ©2025
+					梁社漢排骨
+					All Rights Reserved.
+				</p>
+				<p style="color:white">客服專線：02-2808-5598‧<br />服務時間：週一 ~ 週五 08:30 ~ 18:00(國定假日與六日除外)</p>
+			</div>	
+			
+			
+		</nav>    
+        <script>
+		var x = document.getElementById("demo");
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition, showError);
+			}
+			else { x.innerHTML = "Geolocation is not supported by this browser."; }
+		}
+		function showPosition(position) {
+			x.innerHTML = "Latitude: " + position.coords.latitude +
+				"<br />Longitude: " + position.coords.longitude;
+			window.open(
+				"StoreListMap.asp?L=" + position.coords.latitude + "&L2=" + position.coords.longitude, "_self");
+               // "https://www.buygood.com.tw/t/store0218-2.asp?L=" + position.coords.latitude + "&L2=" + position.coords.longitude, "_self");
+		}
+		function showError(error) {
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					x.innerHTML = "User denied the request for Geolocation."
+					break;
+				case error.POSITION_UNAVAILABLE:
+					x.innerHTML = "Location information is unavailable."
+					break;
+				case error.TIMEOUT:
+					x.innerHTML = "The request to get user location timed out."
+					break;
+				case error.UNKNOWN_ERROR:
+					x.innerHTML = "An unknown error occurred."
+					break;
+			}
+
+
+		}
+
+
+	</script>
+    </body>     
+</html>
+ 
