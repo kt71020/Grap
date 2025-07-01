@@ -1,0 +1,1540 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><!-- 強制user以目前瀏覽器版本相容 jako add 20180402-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="lib/jquery/jquery-3.6.0.min.js?random=上午 10:53" type="text/javascript"></script>
+    <script src="imap.js" type="text/javascript"></script>
+    <script src="iicon.js" type="text/javascript"></script>
+    <script src="m_init.js" type="text/javascript"></script>
+    <script src="slidebar.js" type="text/javascript"></script>
+    <script src="rmenu.js" type="text/javascript"></script>
+    <script src="route.js" type="text/javascript"></script>
+    
+    <script src="lib/areacode.js?random=2025/6/26 上午 10:53:59" type="text/javascript"></script>
+    <script src="searchpane.js" type="text/javascript"></script>
+    <script src="lib/emap.js?random=2025/6/26 上午 10:53:59" type="text/javascript"></script>
+    <script src="lib/jquery/jquery.blockUI_1.10.2.js" type="text/javascript"></script>
+    <script src="lib/util.js" type="text/javascript"></script>
+    <script src="lib/functions.js" type="text/javascript"></script>
+    <script src="lib/jquery/jquery.dd.min.js" type="text/javascript"></script>
+    <script src="lib/func1.js" type="text/javascript"></script>
+    <title>歡迎使用電子地圖系統</title>
+    <style type="text/css">
+        v\:* {
+            behavior: url(#default#VML);
+        }
+    </style>
+    <link href="imap.css" rel="stylesheet" type="text/css" />
+    <link id="css_profile1" href="css/map.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css?random=2025/6/26 上午 10:53:59" rel="stylesheet" type="text/css" />
+    <link href="css/link.css?random=2025/6/26 上午 10:53:59" rel="stylesheet" type="text/css" />
+    <link href="css/style.css?random=2025/6/26 上午 10:53:59" rel="stylesheet" type="text/css" />
+    <link href="css/msdropdown/dd.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"> 
+       var url = window.location.href; 
+        if (url.indexOf("https") < 0) { 
+        url = url.replace("http:", "https:"); 
+        window.location.replace(url); 
+        } 
+    </script> 
+    <script type="text/javascript">
+<!--
+    var empty_String = "<font color='#92692a'>沒有符合特定服務的門市請<a id=\"back\" href=\"#\">回地圖首頁</a>，或重新設定服務查詢</font>";
+    var Selected_Query_Type = "";
+    var Selected_Area = "";
+    var Selected_Country = "";
+    var Selected_Store_Name = "";
+    var Selected_Store_ID = "";
+    var Selected_Store_Type = "";
+    var Selected_Town = "";
+    var Selected_Section = "";
+    var Selected_Address = "";
+    var _largs = Util.url.getArguments();
+    var Selecty;
+    var Selectx;
+    var OtherMapStoreIMG = "images/711_36X36.gif";
+    var SelectStoreIMG = "images/711_sl_36X36.gif";
+    var DisplayStoreName;
+    var DisplayStoreID;
+    function ResetCondition() {
+        Selected_Query_Type = "";
+        Selected_Area = "";
+        Selected_Store_Name = "";
+        Selected_Store_ID = "";
+        Selected_Store_Type = "";
+        Selected_Country = "";
+        Selected_Town = "";
+        Selected_Section = "";
+        Selected_Address = "";
+    }
+    function HideMap() {
+        $("#menu_bo_1").hide();
+        $("div[title=query_condition]").hide();
+        $("#tw").hide();
+        $("#meun_bo").hide();
+        $("#map_all").hide();
+        $("#map_all_title").show();
+        $("#maptable").show();
+    }
+    function RefleshUI() {
+        if (Selected_Query_Type != "") {
+         
+            // 未驗證 Thor
+            //$('#leftMenuChecked').val('');
+            //$('#leftMenuCheckedName').val('');
+            if (Selected_Query_Type == "Type") {
+                HideMap();
+                $("#map_all_1").html("");
+                $("div[title=area]").show();
+                RefleshType();
+                $("input[id^=checkbox_]").unbind();
+                
+                $('[id^=checkbox_]').change(function () {
+                    var str = "";
+                    var strName = "";
+                    $('input:checked').each(function () {
+                        //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                        var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                        //str = str + "'" + checkedItem + "',";
+                        str = str + checkedItem + ",";
+                        strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                    });
+                    str = str.substr(0, str.length - 1);
+                    strName = strName.substr(0, strName.length - 1);
+                    $('#leftMenuChecked').val(str);
+                    $('#leftMenuCheckedName').val(strName);
+                });
+                $("input[id^=checkbox_]").bind("change", function () {
+                    RefleshType();
+                });
+            }
+            else if (Selected_Query_Type == "Address") {
+                
+                Request(
+                    "EMapSDK.aspx",
+                    {
+                        commandid: 'SearchArea',
+                        leftMenuChecked: $('#leftMenuChecked').val(),
+                        address: Selected_Address
+                    },
+                    function (_lArea) {
+                        if (_lArea && _lArea != null) {
+                            var areas = "請選擇所要查詢縣市<br />";
+                            for (var i = 0; i < _lArea.mArea.length; i++) {
+                                areas = areas + "<a href=\"#\" id=\"maplink2_" + _lArea.mArea[i].AreaName + "\">" + _lArea.mArea[i].AreaName + "</a>";
+                                if ((i + 1) == _lArea.mArea.length) {
+                                }
+                                else if ((i + 1) % 9 == 0) {
+                                    areas = areas + "<br>";
+                                }
+                                else {
+                                    areas = areas + "&nbsp;｜&nbsp;";
+                                }
+                            }
+                            if (_lArea.mArea.length == 0) {
+                                alert("沒有符合條件的路名");
+                            }
+                            else {
+                                HideMap();
+                                $("#map_all_1").html("");
+                                $("div[title=address]").show();
+                                $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\">路名</a>&nbsp;&gt;&nbsp;<a href=\"#\">" + Selected_Address + "</a>");
+                                $("input[id^=checkbox_]").unbind();
+                                
+                                $('[id^=checkbox_]').change(function () {
+                                    var str = "";
+                                    var strName = "";
+                                    $('input:checked').each(function () {
+                                        //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                                        var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                                        //str = str + "'" + checkedItem + "',";
+                                        str = str + checkedItem + ",";
+                                        strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                                    });
+                                    str = str.substr(0, str.length - 1);
+                                    strName = strName.substr(0, strName.length - 1);
+                                    $('#leftMenuChecked').val(str);
+                                    $('#leftMenuCheckedName').val(strName);
+                                });
+                                $("input[id^=checkbox_]").bind("change", function () {
+                                    RefleshUI();
+                                });
+                                $("div[title=addresslist]").html(areas);
+                                $("a[id^=maplink2_]").bind("click", function () {
+                                    Selected_Area = $(this).html();
+                                    RefleshAddressSection();
+                                });
+                            }
+                        }
+                    }
+                );
+            }
+            else if (Selected_Query_Type == "Area") {
+                HideMap();
+                $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\" >" + Selected_Area + "</a>");
+                $("div[title=counties]").show();
+                $("div[title=areatitle]").html("請選擇&nbsp;<span class=\"counties_s_hl\">" + Selected_Area + "</span>&nbsp;之內所要查詢的區域");
+                $("input[id^=checkbox_]").unbind();
+                
+                $('[id^=checkbox_]').change(function () {
+                    var str = "";
+                    var strName = "";
+                    $('input:checked').each(function () {
+                        //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                        var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                        //str = str + "'" + checkedItem + "',";
+                        str = str + checkedItem + ",";
+                        strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                    });
+                    str = str.substr(0, str.length - 1);
+                    strName = strName.substr(0, strName.length - 1);
+                    $('#leftMenuChecked').val(str);
+                    $('#leftMenuCheckedName').val(strName);
+                });
+                $("input[id^=checkbox_]").bind("change", function () {
+                    RefleshUI();
+                });
+
+                Request(
+                    "EMapSDK.aspx",
+                    {
+                        commandid: 'GetTown',
+                        cityid: AREACODE.getCityCodeByName(Selected_Area),
+                        leftMenuChecked: $('#leftMenuChecked').val()
+                    },
+                    function (_lTwn) {
+                        if (_lTwn && _lTwn != null) {
+                            var countries = "";
+                            for (var i = 0; i < _lTwn.mTown.length; i++) {
+                                countries = countries + "<a href=\"#\" id=\"town_" + _lTwn.mTown[i].mName + "\">" + _lTwn.mTown[i].mName + "</a>";
+                                if ((i + 1) == _lTwn.mTown.length) {
+                                }
+                                else if ((i + 1) % 9 == 0) {
+                                    countries = countries + "<br>";
+                                }
+                                else {
+                                    countries = countries + "&nbsp;｜&nbsp;";
+                                }
+                            }
+                            if (_lTwn.mTown.length == 0) {
+                                $("div[title=countrieslist]").html(empty_String);
+                                $("a[id=back]").bind("click", function () {
+                                    $('#leftMenuChecked').val('');
+                                    $('#leftMenuCheckedName').val('');
+                                    ResetCondition();
+                                    RefleshUI();
+                                });
+                            }
+                            else {
+                                $("div[title=countrieslist]").html(countries);
+                            }
+
+                            $("a[id^=town_]").bind("click", function () {
+                                Selected_Town = $(this).html();
+                                RefleshTown();
+                            });
+                        }
+                        else {
+                            $("div[title=countrieslist]").html(empty_String);
+                            $("a[id=back]").bind("click", function () {
+                                $('#leftMenuChecked').val('');
+                                $('#leftMenuCheckedName').val('');
+                                ResetCondition();
+                                Selected_Query_Type = "Type";
+                                RefleshUI();
+                            });
+                        }
+                    }
+                );
+            }
+            else if (Selected_Query_Type == "StoreName") {
+                $("input[id^=checkbox_]").unbind();
+                
+                $('[id^=checkbox_]').change(function () {
+                    var str = "";
+                    var strName = "";
+                    $('input:checked').each(function () {
+                        //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                        var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                        //str = str + "'" + checkedItem + "',";
+                        str = str + checkedItem + ",";
+                        strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                    });
+                    str = str.substr(0, str.length - 1);
+                    strName = strName.substr(0, strName.length - 1);
+                    $('#leftMenuChecked').val(str);
+                    $('#leftMenuCheckedName').val(strName);
+                });
+                $("input[id^=checkbox_]").bind("change", function () {
+                    RefleshUI();
+                });
+             
+                Request(
+                    'EMapSDK.aspx',
+                    {
+                        commandid: 'SearchStore',
+                        city: '',
+                        town: '',
+                        roadname: '',
+                        ID: '',
+                        StoreName: Selected_Store_Name,
+                        SpecialStore_Kind: '',
+                        leftMenuChecked: $('#leftMenuChecked').val(),
+                        address: ''
+                    },
+                    function (_stores) {
+                        if (_stores.mPoi.length > 0) {
+                            HideMap();
+                            $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\">店名</a>&nbsp;&gt;&nbsp;<a href=\"#\">" + Selected_Store_Name + "</a>");
+                            $("div[title=store_name]").show();
+                            $("div[title=store_name_title]").html("符合店名為&nbsp;&nbsp;<a href=\"#\">" + Selected_Store_Name + "</a>&nbsp;&nbsp;的門市共有&nbsp;" + _stores.mPoi.length + "&nbsp;家");
+                            RefleshStoreLists(_stores, 1);
+                        }
+                        else {
+                            alert("沒有符合條件的店名");
+                        }
+                    }
+                );
+            }
+            else if (Selected_Query_Type == "StoreID") {
+                Request('EMapSDK.aspx',
+	                    {
+	                        commandid: 'SearchStore',
+	                        city: '',
+	                        town: '',
+	                        roadname: '',
+	                        ID: Selected_Store_ID,
+	                        StoreName: '',
+	                        SpecialStore_Kind: '',
+	                        leftMenuChecked: $('#leftMenuChecked').val(),
+	                        address: ''
+	                    },
+	                    function (_store) {
+	                        if (_store.mPoi.length > 0) {
+	                            HideMap();
+	                            $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\">店號</a>&nbsp;&gt;&nbsp;<a href=\"#\">" + Selected_Store_ID + "</a>");
+	                            RefleshMap(_store.mPoi[0]);
+	                        }
+	                        else {
+	                            alert("查無此店號");
+	                        }
+	                    }
+                    );
+            }
+            else if (Selected_Query_Type == "SpecialStore" && Selected_Store_Type != "請選擇門市") {
+                Request('EMapSDK.aspx',
+                    {
+                        commandid: 'SearchStore',
+                        city: '',
+                        town: '',
+                        roadname: '',
+                        ID: '',
+                        StoreName: '',
+                        SpecialStore_Kind: Selected_Store_Type,
+                        leftMenuChecked: $('#leftMenuChecked').val(),
+                        address: ''
+                    },
+                    function (_store) {
+                        if (_store.mPoi.length > 0) {
+                            HideMap();
+                            $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\">特色門市</a>&nbsp;&gt;&nbsp;<a href=\"#\">" + Selected_Store_Type + "</a>");
+                            RefleshMap(_store.mPoi[0]);
+                        }
+                    }
+                );
+            }
+        }
+        else {
+            CleanItem();
+        }
+    }
+    function RefleshMap(store) {
+        $("#search_map").show();
+        $("div[title=storeinfo]").show();
+        mSelectedID = store.mID;
+        mShowSelectedInfo = true;
+        //jako add 20171124 start
+        var oldY = store.mY.toString();
+        var oldX = store.mX.toString();
+        Selecty = oldY.slice(0, 2) + "." + oldY.slice(2, oldY.length);
+        Selectx = oldX.slice(0, 3) + "." + oldX.slice(3, oldX.length);
+        //避免重新查詢發生地圖已初始化問題
+        if (document.getElementById("m_map") != null) {
+            document.getElementById("search_map").removeChild(document.getElementById("m_map"));
+        }
+
+        var map = document.createElement("div");
+        map.id = "m_map";
+        map.style = "width: 100%; height: 100%;";
+        document.getElementById("search_map").appendChild(map);
+        
+        initmap("m_map", "https://emap.pcsc.com.tw/npk/npkget.ashx", Selecty, Selectx, 17, NewMapcallback);
+        //cleanmark();
+
+        mapview(Selecty, Selectx, 17);
+
+        control(true);
+        smallmap("close", true, 4); //預設啟用小地圖，但不打開小地圖(close)
+        
+		//隱藏勤威 關於 
+		//$("#sabout").hide();
+        //var kwmapabout = document.getElementsByTagName("div")[106].innerHTML;
+        //document.getElementsByTagName("div")[106].innerHTML = kwmapabout.replace("關於", "");
+        //jako add 20171124 end
+
+        RefleshStore(store.mID);
+    }
+
+    function NewMapcallback(m) {
+        if (m.mode == "click") {
+            //console.log(m);
+            //取得目前點位
+            Selecty = m.lat.toString().substring(0, 9);
+            Selectx = m.lng.toString().substring(0, 10);
+            mapview(Selecty, Selectx, 17);
+            RefleshStore(m.id);
+        }
+        else if (m.mode == "view") {
+            //console.log(m);
+            var getlng_x1 = m.lng1.toString().substring(0,10);
+            var getlng_x2 = m.lng2.toString().substring(0,10);
+            var getlat_y1 = m.lat1.toString().substring(0,9);
+            var getlat_y2 = m.lat2.toString().substring(0,9);
+            var getlng_newx1 = getlng_x1.replace(".", "");
+            var getlng_newx2 = getlng_x2.replace(".", "");
+            var getlat_newy1 = getlat_y1.replace(".", "");
+            var getlat_newy2 = getlat_y2.replace(".", "");
+            
+            // 多數打點 start
+            if (m.z > 14) {//地圖縮放等級小於 14 不顯示打點圖示
+                $.post(
+                    'EMapSDK.aspx',
+                    {
+                        commandid: 'Search0007',
+                        x1: getlng_newx1,
+                        y1: getlat_newy1,
+                        x2: getlng_newx2,
+                        y2: getlat_newy2
+                    },
+                    function (pXml) {
+                        //console.log(pXml);//顯示點位xml資料
+                        cleanmark(); //清除之前打點，重新打點
+                        var xCount = pXml.getElementsByTagName("X"); //取得範圍內門市筆數
+                        for (i = 0; i < xCount.length; i++) {
+                            DisplayStoreName = pXml.getElementsByTagName("POIName")[i].childNodes[0].nodeValue;// 取得店名 
+                            DisplayStoreID = pXml.getElementsByTagName("POIID")[i].childNodes[0].nodeValue; // 取得店號
+                            var DisplayStoreX = pXml.getElementsByTagName("X")[i].childNodes[0].nodeValue;// 取得 x 座標
+                            var DisplayStoreY = pXml.getElementsByTagName("Y")[i].childNodes[0].nodeValue;// 取得 y 座標
+                            if (m.z > 14) {//地圖縮放等級小於 14 不顯示打點圖示
+                                if (DisplayStoreY == padRight(Selecty, 9) && DisplayStoreX == padRight(Selectx, 10)) { //顯示選擇門市
+                                    addmark(Selecty, Selectx, SelectStoreIMG, 36, 36, 36, "", DisplayStoreID, false, true, DisplayStoreName);
+                                }
+                                else { //其餘非選擇門市
+                                    addmark(DisplayStoreY, DisplayStoreX, OtherMapStoreIMG, 36, 36, 36, "", DisplayStoreID, false, true, DisplayStoreName);
+                                }
+                            }
+                            else {
+                                cleanmark();//地圖縮放等級小於 14 不顯示打點圖示
+                            }
+                        }
+                    }
+                );
+            } else {
+                cleanmark();//地圖縮放等級小於 14 不顯示打點圖示
+            }
+            // 多數打點 end
+        }
+    }
+
+    function padLeft(str, lenght) {
+        if (str.length >= lenght)
+            return str;
+        else
+            return padLeft("0" + str, lenght);
+    }
+    function padRight(str, lenght) {
+        if (str.length >= lenght)
+            return str;
+        else
+            return padRight(str + "0", lenght);
+    }
+    function CleanItem() {
+        $("#menu_bo_1").show();
+        $("div[title=counties]").hide();
+        $("div[title=area]").hide();
+        $("div[title=address]").hide();
+        $("div[title=towns]").hide();
+        $("div[title=query_condition]").show();
+        $("#tw").show();
+        $("#meun_bo").show();
+        $("#map_all").show();
+        $("#map_all_title").hide();
+        $("#map_all_1").html("");
+        // $("#link_reset").attr("style", "visibility: hidden");
+        $("div[title=storeslist]").hide();
+        $("#nb_pagination").hide();
+        $("input[id^=checkbox_]").unbind();
+        
+        $('[id^=checkbox_]').change(function () {
+            var str = "";
+            var strName = "";
+            $('input:checked').each(function () {
+                //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                //str = str + "'" + checkedItem + "',";
+                str = str + checkedItem + ",";
+                strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+            });
+            str = str.substr(0, str.length - 1);
+            strName = strName.substr(0, strName.length - 1);
+            $('#leftMenuChecked').val(str);
+            $('#leftMenuCheckedName').val(strName);
+        });
+        $("input[id^=checkbox_]").each(function () {
+            $(this).prop("checked", false);
+        });
+        $("div[title=sections]").hide();
+        $("div[title=storeinfo]").hide();
+        $("div[title=store_name]").hide();
+        $("#d_list").val("");
+        $("#search_map").hide();
+        $("#m_map").html("");
+        $("#s_map").html("");
+        $("div[title=storeinfo]").html("");
+    }
+
+    function RefleshStore(mID) {
+        Request(
+            'EMapSDK.aspx',
+            {
+                commandid: 'SearchStore',
+                city: '',
+                town: '',
+                roadname: '',
+                ID: mID,
+                StoreName: '',
+                SpecialStore_Kind: '',
+                leftMenuChecked: $('#leftMenuChecked').val(),
+                txt_IsFromMapSelStore: 'Y',
+                address: ''
+            },
+            function (_store) {
+                if (_store.mPoi.length > 0) {
+                    var storeInfo = "<table width=\"725\" height=\"125\" cellpadding=\"0\" cellspacing=\"1\" id=\"mytb\"><tr> <th width=\"85\">門市名稱</th><th width=\"411\">門市情報</th><th width=\"223\">門市特定服務</th></tr>";
+                    storeInfo = storeInfo + "<tr><td align=\"center\" class=\"alt\">" + _store.mPoi[0].mName;
+                    if (_store.mPoi[0].mSpecialStore_Kind != null) {
+                        storeInfo = storeInfo + "<div id=\"icon_special\">" + _store.mPoi[0].mSpecialStore_Kind + "</div>";
+                    }
+                    storeInfo = storeInfo + "</td>";
+                    var faxno = '';
+                    if (_store.mPoi[0].mFax != null) {
+                        faxno = _store.mPoi[0].mFax;
+                    }
+                    storeInfo = storeInfo + "<td valign=\"top\" class=\"alt\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"mytb_1\"><tr><td width=\"315\">門市店號：" + _store.mPoi[0].mID + "<br />門市店名：" + _store.mPoi[0].mName + "<br />地址：" + _store.mPoi[0].mAddress + "<br />電話：" + _store.mPoi[0].mTel + "<br />接收傳真服務(付費)：" + faxno + "</td></tr></table></td>";
+                    storeInfo = storeInfo + "<td valign=\"top\" class=\"alt\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"icon_sps_li\">";
+                    storeInfo = storeInfo + "<tr></tr><tr>";
+                   
+                    if (_store.mPoi[0].mStoreImageTitle != null) {
+                        //storeInfo = storeInfo + "<td><input type='text' value='" + _store.mPoi[0].mStoreImageTitle + "'/></td>";
+                        var storeImage = _store.mPoi[0].mStoreImageTitle.split(',');
+
+                        storeImage.forEach(function (element, index) {
+                            var sImage = element.substring(0, 2);
+                            var sTitle = element.substring(2, element.length + 2);
+                            //                            storeList = storeList + "<td><input type='text' value='" +  + "'/></td>";
+                            storeInfo = storeInfo + "<td class=\"icon_sps_li\"><img class='serviceImg' src=\"menuImg/service_" + sImage + ".jpg\" width=\"26\" height=\"26\"  onerror=\"this.src='images/iconWhite.png'\" title=\"" + sTitle + "\"/></td>";
+                            if (index % 7 == 6) { storeInfo = storeInfo + "</tr><tr>"; }
+                        });
+                    }
+
+
+                    storeInfo = storeInfo + "</tr></table>";
+                    if (_store.mPoi[0].mStore_URL != null) {
+                        storeInfo = storeInfo + "<a href=\"" + _store.mPoi[0].mStore_URL + "\" target=_blank class=\"special_but\">Dr.7介紹特色門市</a>";
+                    }
+
+                    storeInfo = storeInfo + "</td></tr>";
+                    storeInfo = storeInfo + "</table>";
+                    $("div[title=storeinfo]").html(storeInfo);
+                    $("div[title=storeinfo]").show();
+                }
+            }
+        );
+    }
+
+    function RefleshStoreLists(_stores, selectedpage) {
+        if (_stores.mPoi.length > 0) {
+            var storeList = " <table width=\"725\" height=\"125\" cellpadding=\"0\" cellspacing=\"1\" id=\"mytb\"><tr><th width=\"85\">門市名稱</th><th width=\"411\">門市情報</th><th width=\"223\">門市特定服務 </td></th></tr>";
+            for (var i = (selectedpage - 1) * 5; i < selectedpage * 5; i++) {
+                if (i < _stores.mPoi.length) {
+                    var faxno = '';
+                    if (_stores.mPoi[i].mFax != null) {
+                        faxno = _stores.mPoi[i].mFax;
+                    }
+                    storeList = storeList + "<tr><td align=\"center\" class=\"alt\">" + _stores.mPoi[i].mName + "</td>";
+                    storeList = storeList + "<td valign=\"top\" class=\"alt\"><table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"mytb_1\"><tr><td width=\"315\">門市店號：" + _stores.mPoi[i].mID + "<br />門市店名：" + _stores.mPoi[i].mName + "</td><td width=\"75\" valign=\"top\"><a href=\"#\" class=\"map_icon\" id=\"storemap_" + _stores.mPoi[i].mID + "\"></a></td></tr><tr><td colspan=2>地址：" + _stores.mPoi[i].mAddress + "<br />電話：" + _stores.mPoi[i].mTel + "<br />接收傳真服務(付費)：" + faxno + "</td></tr></table></td>";
+                    storeList = storeList + "<td valign=\"top\" class=\"alt\"><table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"icon_sps_li\">";
+                    storeList = storeList + "<tr></tr><tr>";
+
+                    if (_stores.mPoi[i].mStoreImageTitle != null) {
+                        //storeList = storeList + "<td><input type='text' value='" + _stores.mPoi[i].mStoreImageTitle + "'/></td>";
+                        var storeImage = _stores.mPoi[i].mStoreImageTitle.split(',');
+
+                        storeImage.forEach(function (element, index) {
+                            var sImage = element.substring(0, 2);
+                            var sTitle = element.substring(2, element.length + 2);
+                            //                            storeList = storeList + "<td><input type='text' value='" +  + "'/></td>";
+                            storeList = storeList + "<td class=\"icon_sps_li\"><img class='serviceImg' src=\"menuImg/service_" + sImage + ".jpg\" width=\"26\" height=\"26\" onerror=\"this.src='images/iconWhite.png'\" title=\"" + sTitle + "\"/></td>";
+                            if (index % 7 == 6) { storeList = storeList + "</tr><tr>"; }
+                        });
+                    }
+                  
+                    storeList = storeList + "</tr></table></td></tr>";
+                }
+            }
+            storeList = storeList + "</table>";
+            $("div[title=storeslist]").html(storeList);
+            $("div[title=storeslist]").show();
+            $("a[id^=storemap_]").bind("click", function () {
+                $("input[id^=checkbox_]").unbind();
+                $("div[title=towns]").hide();
+                $("div[title=store_name]").hide();
+                $("div[title=sections]").hide();
+                $("#nb_pagination").hide();
+                $("div[title=storeslist]").hide();
+                for (var i = 0; i < _stores.mPoi.length; i++) {
+                    if (_stores.mPoi[i].mID == $(this).attr("ID").replace('storemap_', '')) {
+                        var store = _stores.mPoi[i];
+                    }
+                }
+                if (Selected_Town != "") {
+                    $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link1\">" + Selected_Area + "</a>&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link2\">" + Selected_Town + "</a>&nbsp;&gt;&nbsp;<span id=\"storename\">" + store.mName + "</span>");
+                }
+                if (Selected_Address == "") {
+                    $("a[id=map_all_link1]").bind("click", function () {
+                        $("input[id^=checkbox_]").unbind();
+                        ResetCondition();
+                        Selected_Query_Type = "Area";
+                        Selected_Area = $(this).html();
+                        Selected_Town = "";
+                        Selected_Section = "";
+                        $("div[title=sections]").hide();
+                        $("div[title=storeslist]").hide();
+                        $("#nb_pagination").hide();
+                        $("div[title=storeinfo]").hide();
+                        $("#search_map").hide();
+                        $("#m_map").html("");
+                        $("#s_map").html("");
+                        RefleshUI();
+                    });
+                    $("a[id=map_all_link2]").bind("click", function () {
+                        ResetCondition();
+                        Selected_Query_Type = "Area";
+                        Selected_Area = $("a[id = map_all_link1]").html();
+                        Selected_Town = $(this).html();
+                        Selected_Section = "";
+                        $("div[title=sections]").hide();
+                        $("div[title=storeinfo]").hide();
+                        $("#search_map").hide();
+                        $("#m_map").html("");
+                        $("#s_map").html("");
+                        RefleshTown();
+                    });
+                }
+                else {
+                    //Address Search
+                    $("a[id=map_all_link1]").unbind();
+                    $("a[id=map_all_link1]").bind("click", function () {
+                        ResetCondition();
+                        Selected_Query_Type = "Address";
+                        Selected_Address = $(this).html();
+                        Selected_Area = "";
+                        $("div[title=sections]").hide();
+                        $("div[title=storeinfo]").hide();
+                        $("#search_map").hide();
+                        $("#m_map").html("");
+                        $("#s_map").html("");
+                        RefleshUI();
+                    });
+                    $("a[id=map_all_link2]").bind("click", function () {
+                        ResetCondition();
+                        Selected_Query_Type = "Address";
+                        Selected_Address = $("a[id = map_all_link1]").html();
+                        Selected_Area = $(this).html();
+                        $("div[title=sections]").hide();
+                        $("div[title=storeinfo]").hide();
+                        $("#search_map").hide();
+                        $("#m_map").html("");
+                        $("#s_map").html("");
+                        RefleshAddressSection();
+                    });
+                }
+                RefleshMap(store);
+            });
+            if (_stores.mPoi.length > 5) {
+                var pager = "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td width=\"9\" align=\"right\" valign=\"top\" >&nbsp;</td>";
+                if (selectedpage == 1) {
+                    pager = pager + "<td align=\"left\" valign=\"top\"><span class=\"disabled_nb_pagination\">Prev</span></td>";
+                }
+                else {
+                    pager = pager + "<td align=\"left\" valign=\"top\"><a href=\"#forwaed\" class=\"nb1_pagination\" id=\"Prev\">Prev</a></td>";
+                }
+                pager = pager + "<td align=\"center\" valign=\"top\"  class=\"nb_pagination\">";
+                for (var i = 1; i <= Math.ceil(_stores.mPoi.length / 5) ; i++) {
+                    if (selectedpage == i) {
+                        pager = pager + "<span class=\"active_nb_link\">" + i + "</span>";
+                    }
+                    else {
+                        pager = pager + "<a href=\"#" + i + "\" id=\"pager_" + i + "\">" + i + "</a>";
+                    }
+                }
+                pager = pager + "</td><td width=\"8\" align=\"left\" valign=\"top\">&nbsp;</td>";
+                if (selectedpage == Math.ceil(_stores.mPoi.length / 5)) {
+                    pager = pager + "<td align=\"left\" valign=\"top\"><span class=\"disabled_nb_pagination\">Next</span></td>";
+                }
+                else {
+                    pager = pager + "<td align=\"left\" valign=\"top\"><a href=\"#forwaed\"  class=\"nb1_pagination\" id=\"Next\">Next</a></td>";
+                }
+                pager = pager + "<td width=\"9\" align=\"left\" valign=\"top\">&nbsp;</td></tr><tr><td height=\"35\" colspan=\"6\" align=\"right\" valign=\"top\" >&nbsp;</td></tr></table>";
+                $("#nb_pagination").html(pager);
+                $("#nb_pagination").show();
+                $("#Prev").bind("click", function () {
+                    RefleshStoreLists(_stores, parseInt(selectedpage) - 1);
+                });
+                $("a[id^=pager_]").bind("click", function () {
+                    RefleshStoreLists(_stores, $(this).html());
+                });
+                $("#Next").bind("click", function () {
+                    RefleshStoreLists(_stores, parseInt(selectedpage) + 1);
+                });
+            }
+            else {
+                $("#nb_pagination").hide();
+            }
+        }
+        else {
+            $("div[title=storeslist]").show();
+            $("#nb_pagination").hide();
+            $("div[title=storeslist]").html(empty_String);
+            $("a[id=back]").bind("click", function () {
+                $('#leftMenuChecked').val('');
+                $('#leftMenuCheckedName').val('');
+                ResetCondition();
+                RefleshUI();
+            });
+        }
+    }
+
+    function RefleshTown() {
+        $("div[title=counties]").hide();
+        $("input[id^=checkbox_]").unbind();
+        $('[id^=checkbox_]').change(function () {
+            var str = "";
+            var strName = "";
+            $('input:checked').each(function () {
+                //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                //str = str + "'" + checkedItem + "',";
+                str = str + checkedItem + ",";
+                strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+            });
+            str = str.substr(0, str.length - 1);
+            strName = strName.substr(0, strName.length - 1);
+            $('#leftMenuChecked').val(str);
+            $('#leftMenuCheckedName').val(strName);
+        });
+        $("input[id^=checkbox_]").bind("change", function () {
+            RefleshTown();
+        });
+        $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link1\">" + Selected_Area + "</a>&nbsp;&gt;&nbsp;<a href=\"#\">" + Selected_Town + "</a>");
+        $("a[id=map_all_link1]").bind("click", function () {
+            $("input[id^=checkbox_]").unbind();
+            ResetCondition();
+            Selected_Query_Type = "Area";
+            Selected_Area = $(this).html();
+            $("div[title=towns]").hide();
+            $("div[title=storeslist]").hide();
+            $("#nb_pagination").hide();
+            RefleshUI();
+        });
+       
+        $("div[title=towns]").show();
+        
+        Request(
+            'EMapSDK.aspx',
+            {
+                commandid: 'SearchStore',
+                city: Selected_Area,
+                town: Selected_Town,
+                roadname: '',
+                ID: '',
+                StoreName: '',
+                SpecialStore_Kind: '',
+                leftMenuChecked: $('#leftMenuChecked').val(),
+                address: ''
+            },
+            function (_stores) {
+                RefleshStoreLists(_stores, 1);
+                $("div[title=sectionstitle]").html("<a href=\"#\">" + Selected_Area + "</a>&nbsp;&nbsp;<a href=\"#\">" + Selected_Town + "</a>&nbsp;&nbsp;的門市共有&nbsp;" + _stores.mPoi.length + "&nbsp;家</div>");
+                Request(
+                    "EMapSDK.aspx",
+                    {
+                        commandid: 'SearchRoad',
+                        city: Selected_Area,
+                        town: Selected_Town,
+                        ID: '',
+                        StoreName: '',
+                        SpecialStore_Kind: '',
+                        leftMenuChecked: $('#leftMenuChecked').val()
+                    },
+                    function (_lob) {
+                        if (_lob && _lob != null) {
+                            var sections = "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"auto\"><tr><td height=\"32\" valign=\"top\">請選擇路段：</td></tr><tr><td>";
+                            for (var i = 0; i < _lob.mRoad.length; i++) {
+                                if (_lob.mRoad[i].mSection != null) {
+                                    sections = sections + "<a href=\"#\" id=\"section_" + _lob.mRoad[i].mName + _lob.mRoad[i].mSection + "\">" + _lob.mRoad[i].mName + _lob.mRoad[i].mSection + "</a>";
+                                }
+                                else {
+                                    sections = sections + "<a href=\"#\" id=\"section_" + _lob.mRoad[i].mName + "\">" + _lob.mRoad[i].mName + "</a>";
+                                }
+                                if ((i + 1) == _lob.mRoad.length) {
+                                }
+                                else if ((i + 1) % 6 == 0) {
+                                    sections = sections + "<br>";
+                                }
+                                else {
+                                    sections = sections + "&nbsp;｜&nbsp;";
+                                }
+                            }
+                            sections = sections + "</td></tr></table>";
+                            $("div[title=townslist]").html(sections);
+                            $("a[id^=section_]").bind("click", function () {
+                                Selected_Section = $(this).html();
+                                RefleshSection();
+                            });
+                        }
+                    }
+                );
+            }
+        );
+    }
+
+    function RefleshSection() {
+        $("div[title=towns]").hide();
+        $("input[id^=checkbox_]").unbind();
+        
+        $('[id^=checkbox_]').change(function () {
+            var str = "";
+            var strName = "";
+            $('input:checked').each(function () {
+                //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                //str = str + "'" + checkedItem + "',";
+                str = str + checkedItem + ",";
+                strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+            });
+            str = str.substr(0, str.length - 1);
+            strName = strName.substr(0, strName.length - 1);
+            $('#leftMenuChecked').val(str);
+            $('#leftMenuCheckedName').val(strName);
+        });
+        $("input[id^=checkbox_]").bind("change", function () {
+            RefleshSection();
+        });
+        $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link1\">" + Selected_Area + "</a>&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link2\">" + Selected_Town + "</a>");
+        $("a[id=map_all_link1]").bind("click", function () {
+            $("input[id^=checkbox_]").unbind();
+            ResetCondition();
+            Selected_Query_Type = "Area";
+            Selected_Area = $(this).html();
+            Selected_Town = "";
+            Selected_Section = "";
+            $("div[title=sections]").hide();
+            $("div[title=storeslist]").hide();
+            $("#nb_pagination").hide();
+            RefleshUI();
+        });
+        $("a[id=map_all_link2]").bind("click", function () {
+            ResetCondition();
+            Selected_Query_Type = "Area";
+            Selected_Area = $("a[id = map_all_link1]").html();
+            Selected_Town = $(this).html();
+            Selected_Section = "";
+            $("div[title=sections]").hide();
+            RefleshTown();
+        });
+        $("div[title=sections]").show();
+      
+        Request(
+            'EMapSDK.aspx',
+            {
+                commandid: 'SearchStore',
+                city: Selected_Area,
+                town: Selected_Town,
+                roadname: Selected_Section,
+                ID: '',
+                StoreName: '',
+                SpecialStore_Kind: '',
+                leftMenuChecked: $('#leftMenuChecked').val(),
+                address: ''
+            },
+            function (_stores) {
+                RefleshStoreLists(_stores, 1);
+                $("div[title=storestitle]").html("<a href=\"#\">" + Selected_Section + "</a>&nbsp;&nbsp;的門市共有&nbsp;" + _stores.mPoi.length + "&nbsp;家</div>");
+            }
+        );
+    }
+
+    function RefleshAddressSection() {
+        $("div[title=address]").hide();
+        $("input[id^=checkbox_]").unbind();
+        
+        $('[id^=checkbox_]').change(function () {
+            var str = "";
+            var strName = "";
+            $('input:checked').each(function () {
+                //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                //str = str + "'" + checkedItem + "',";
+                str = str + checkedItem + ",";
+                strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+            });
+            str = str.substr(0, str.length - 1);
+            strName = strName.substr(0, strName.length - 1);
+            $('#leftMenuChecked').val(str);
+            $('#leftMenuCheckedName').val(strName);
+        });
+        $("input[id^=checkbox_]").bind("change", function () {
+            RefleshAddressSection();
+        });
+        $("#map_all_1").html("門市查詢&nbsp;&gt;&nbsp;<a href=\"#\">路名</a>&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link1\">" + Selected_Address + "</a>&nbsp;&gt;&nbsp;<a href=\"#\" id=\"map_all_link2\">" + Selected_Area + "</a>");
+        $("a[id=map_all_link1]").bind("click", function () {
+            $("input[id^=checkbox_]").unbind();
+            ResetCondition();
+            Selected_Query_Type = "Address";
+            Selected_Address = $(this).html();
+            Selected_Area = "";
+            $("div[title=sections]").hide();
+            $("div[title=storeslist]").hide();
+            $("#nb_pagination").hide();
+            RefleshUI();
+        });
+        $("div[title=sections]").show();
+       
+        Request(
+            'EMapSDK.aspx',
+            {
+                commandid: 'SearchStore',
+                city: Selected_Area,
+                town: '',
+                roadname: '',
+                ID: '',
+                StoreName: '',
+                SpecialStore_Kind: '',
+                leftMenuChecked: $('#leftMenuChecked').val(),
+                address: Selected_Address
+            },
+            function (_stores) {
+                RefleshStoreLists(_stores, 1);
+                $("div[title=storestitle]").html("符合路名包含&nbsp;&nbsp;<a href=\"#\">" + Selected_Address + "</a>&nbsp;&nbsp;條件的門市共有&nbsp;" + _stores.mPoi.length + "&nbsp;家</div>");
+            }
+        );
+    }
+
+    function RefleshType() {
+        $("#map_all_1").html("");
+        var type = "門市查詢&nbsp;&gt;&nbsp;查詢服務(";
+     
+        var str = "";
+        var strName = "";
+        $('input:checked').each(function () {
+            var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+            //str = str + "'" + checkedItem + "',";
+            str = str + checkedItem + ",";
+            strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+        });
+        str = str.substr(0, str.length - 1);
+        strName = strName.substr(0, strName.length - 1);
+        $('#leftMenuChecked').val(str);
+        $('#leftMenuCheckedName').val(strName);
+        
+        var $leftMenuCheckedName = $('#leftMenuCheckedName').val();
+        if( $leftMenuCheckedName != ''){
+            type = type + $leftMenuCheckedName;
+        }
+        type += ")";
+        $("#map_all_1").html(type);
+        Request(
+                    "EMapSDK.aspx",
+                    {
+                        commandid: 'SearchArea',
+                        leftMenuChecked: $('#leftMenuChecked').val(),
+                        address: Selected_Address
+                    },
+                    function (_lArea) {
+                        if (_lArea && _lArea != null) {
+                            var areas = "請選擇所要查詢縣市<br />";
+                            for (var i = 0; i < _lArea.mArea.length; i++) {
+                                areas = areas + "<a href=\"#\" id=\"maplink2_" + _lArea.mArea[i].AreaName + "\">" + _lArea.mArea[i].AreaName + "</a>";
+                                if ((i + 1) == _lArea.mArea.length) {
+                                }
+                                else if ((i + 1) % 9 == 0) {
+                                    areas = areas + "<br>";
+                                }
+                                else {
+                                    areas = areas + "&nbsp;｜&nbsp;";
+                                }
+                            }
+                            if (_lArea.mArea.length == 0) {
+                                $("div[title=arealist]").html(empty_String);
+                                $("a[id=back]").bind("click", function () {
+                                    $('#leftMenuChecked').val('');
+                                    $('#leftMenuCheckedName').val('');
+                                    ResetCondition();
+                                    RefleshUI();
+                                });
+                            }
+                            else {
+                                $("div[title=arealist]").html(areas);
+                            }
+                            $("a[id^=maplink2_]").bind("click", function () {
+                                ResetCondition();
+                                Selected_Query_Type = "Area";
+                                Selected_Area = $(this).html();
+                                $("div[title=area]").hide();
+                                RefleshUI();
+                            });
+                        }
+                    }
+                );
+    }
+
+    //-->
+
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5G3DBR5GCK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        //gtag('config', 'UA-100442423-1');
+        gtag('config', 'G-5G3DBR5GCK');
+    </script>
+</head>
+<body onload="MM_preloadImages('images/but_maphome-02.jpg')">
+    <div class="bg">
+        <div class="ind_bg">
+            <div id="contaxt">
+                <div id="left_menu">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="left_rsbut">
+                        <tr>
+                            <td>
+                                <a href="#" id="link_reset" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','images/but_maphome-02.jpg',1)">
+                                    <img alt="" src="images/but_maphome-01.jpg" name="Image1" width="187" height="29" border="0" id="Image1" /></a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="menu">
+                        <div id="menu_t">
+                            使用特定服務查詢<br />
+                            <span class="menu_ts">(請勾選搜尋提供服務之門市)</span>
+                        </div>
+                        <input type="hidden" id="leftMenuChecked" />
+                        <input type="hidden" id="leftMenuCheckedName" />
+                        <div id="menu_li">
+                        </div>
+                        <div id="menu_bo_1">
+                            <table width="100%" style="height: 43" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" valign="middle">
+                                        <a href="#" id="link_type" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image7','','images/but_search-02.jpg',1)">
+                                            <img src="images/but_search-01.jpg" name="Image7" width="165" height="27" border="0" id="Image7" alt="" /></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="main_con">
+                    <div id="main_top">
+                    </div>
+                    <div id="map_all">
+                    </div>
+                    <table id="maptable" style="display: none; margin-top: -3px; margin-left: -3px">
+                        <tr>
+                            <td>
+                                <div id="map_all_title" style="display: none;">
+                                </div>
+                            </td>
+                            <td>
+                                <div id="map_all_1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="seardh_bar_1" title="query_condition">
+                        <table width="723" style="height: 72" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td width="15"></td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="23"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>特色門市查詢
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="130" align="left" valign="top">
+                                    <table width="130" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select name="d_list" id="d_list">
+	<option value="">請選擇門市</option>
+	<option value="全台最東" data-image="images/ddlist.jpg">全台最東</option>
+	<option value="全台最西" data-image="images/ddlist.jpg">全台最西</option>
+	<option value="全台最南" data-image="images/ddlist.jpg">全台最南</option>
+	<option value="全台最北" data-image="images/ddlist.jpg">全台最北</option>
+	<option value="全台最高" data-image="images/ddlist.jpg">全台最高</option>
+	<option value="全台最大" data-image="images/ddlist.jpg">全台最大</option>
+</select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="23" colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">使用店名查詢
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" class="sm_tx">(例：中錦)
+                                            </td>
+                                            <td width="5" align="right" class="menu_ts">
+                                                <img src="images/space.png" width="7" height="5" alt="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="shop_na" type="text" id="tx_box" value="請輸入店名" maxlength="4" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="2">
+                                    <img src="images/space.png" width="2" height="2" alt="" />
+                                </td>
+                                <td width="64" align="left" valign="top">
+                                    <table width="64" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image3','','images/search_but_o.png',1)">
+                                                    <img src="images/search_but.png" name="Image3" width="50" height="24" border="0"
+                                                        id="Image_store_name" alt="" /></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="23" colspan="2"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">使用店號查詢
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top" class="sm_tx">(例：6碼店號)
+                                            </td>
+                                            <td width="5" align="right" class="menu_ts">
+                                                <img src="images/space.png" width="7" height="5&quot;" alt="" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="shop_no" type="text" id="tx_box" value="請輸入店號" maxlength="6" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="2">
+                                    <img src="images/space.png" width="2" height="2" alt="" />
+                                </td>
+                                <td width="64" align="left" valign="top">
+                                    <table width="64" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/search_but_o.png',1)">
+                                                    <img src="images/search_but.png" name="Image4" width="50" height="24" border="0"
+                                                        id="Image_store_id" alt="" /></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15"></td>
+                                <td width="90" align="left" valign="top">
+                                    <table width="90" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="23"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>路名查詢
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="310" align="left" valign="top" colspan="3">
+                                    <table width="310" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="address" type="text" id="tx_box" value="請輸入街道名" maxlength="20" style="width: 310px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="2">
+                                    <img src="images/space.png" width="2" height="2" alt="" />
+                                </td>
+                                <td width="64" align="left" valign="top">
+                                    <table width="64" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/search_but_o.png',1)">
+                                                    <img src="images/search_but.png" name="Image4" width="50" height="24" border="0" id="Image_address" alt="" /></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td colspan="4">
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td height="18"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="sm_tx" align="left">(例：忠孝東路、基隆路二段)
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="tw">
+                        <div id="keelung">
+                            <a href="#" class="n_1" id="maplink_keelung">基隆市</a>
+                        </div>
+                        <div id="taipei">
+                            <a href="#" class="n_1" id="maplink_taipei">台北市</a>
+                        </div>
+                        <div id="n_taipei">
+                            <a href="#" class="n_1" id="maplink_n_taipei">新北市</a>
+                        </div>
+                        <div id="taoyuan">
+                            <a href="#" class="n_2" id="maplink_taoyuan">桃園市</a>
+                        </div>
+                        <div id="hsinchu">
+                            <a href="#" class="n_2" id="maplink_hsinchu">新竹市</a>
+                        </div>
+                        <div id="hsinchu_cinuty">
+                            <a href="#" class="n_2" id="maplink_hsinchu_cinuty">新竹縣</a>
+                        </div>
+                        <div id="Miaoli">
+                            <a href="#" class="n_2" id="maplink_Miaoli">苗栗縣</a>
+                        </div>
+                        <div id="taichung">
+                            <a href="#" class="c" id="maplink_taichung">台中市</a>
+                        </div>
+                        <div id="changhua">
+                            <a href="#" class="c" id="maplink_changhua">彰化縣</a>
+                        </div>
+                        <div id="nantou">
+                            <a href="#" class="c" id="maplink_nantou">南投縣</a>
+                        </div>
+                        <div id="yunlin">
+                            <a href="#" class="w" id="maplink_yunlin">雲林縣</a>
+                        </div>
+                        <div id="chiayi_c">
+                            <a href="#" class="w" id="maplink_chiayi_c">嘉義縣</a>
+                        </div>
+                        <div id="chiayi">
+                            <a href="#" class="w" id="maplink_chiayi">嘉義市</a>
+                        </div>
+                        <div id="tainan">
+                            <a href="#" class="s" id="maplink_tainan">台南市</a>
+                        </div>
+                        <div id="kaohsiung">
+                            <a href="#" class="s" id="maplink_kaohsiung">高雄市</a>
+                        </div>
+                        <div id="pingtung">
+                            <a href="#" class="s" id="maplink_pingtung">屏東縣</a>
+                        </div>
+                        <div id="ilan">
+                            <a href="#" class="e" id="maplink_ilan">宜蘭縣</a>
+                        </div>
+                        <div id="hualien">
+                            <a href="#" class="e" id="maplink_hualien">花蓮縣</a>
+                        </div>
+                        <div id="taitung">
+                            <a href="#" class="e" id="maplink_taitung">台東縣</a>
+                        </div>
+                        <div id="matsu">
+                            <a href="#" class="w_1" id="maplink_matsu">連江縣</a>
+                        </div>
+                        <div id="gammon">
+                            <a href="#" class="w_1" id="maplink_gammon">金門縣</a>
+                        </div>
+                        <div id="penghu">
+                            <a href="#" class="w_1" id="maplink_penghu">澎湖縣</a>
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="area">
+                        <div id="counties_s_li" title="arealist">
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="address">
+                        <div id="counties_s_li" title="addresslist">
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="counties">
+                        <div id="counties_s" title="areatitle">
+                        </div>
+                        <div id="counties_s_li" title="countrieslist">
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="towns">
+                        <div id="counties_s" title="sectionstitle">
+                        </div>
+                        <div id="counties_s_li" title="townslist">
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="sections">
+                        <div id="counties_s" title="storestitle">
+                        </div>
+                        <div id="counties_s_li">
+                            請選擇門市：
+                        </div>
+                    </div>
+                    <div id="seardh_bar" title="store_name">
+                        <div id="counties_s" title="store_name_title"></div>
+                        <div id="counties_s_li">請選擇門市： </div>
+                    </div>
+                    <div id="seardh_bar_list" title="storeslist">
+                    </div>
+                    <div id="nb_pagination">
+                    </div>
+                    <div id="search_map" class="main_table" style="margin-left: 9px; width: 723px; height: 453px; display: none; position: relative; overflow: hidden">
+                        <div id="m_map" style="width: 100%; height: 100%;"></div>
+                        <input type="hidden" id="txt_IsFromMapSelStore" value="N" /><!-- 新增 for 新式選單選擇服務門市判斷是否從地圖內選門市以達取得門市資訊 -->
+                        
+                    </div>
+                    <div id="seardh_bar_list" title="storeinfo">
+                    </div>
+                </div>
+                <div id="main_right"></div>
+            </div>
+            <div id="contaxt_bottom"></div>
+            <div id="copyright">
+                <table width="990" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="495" height="50" valign="top">&nbsp;</td>
+                        <td width="495" align="right" valign="top">©2014 President Chain Store Corporation.　All rights reserved.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var today = 2025+(6<=9?'0':'')+6+(26<=9?'0':'')+26;
+    var yesterday = 2025+(6<=9?'0':'')+6+(25<=9?'0':'')+25
+    $.get("emap_service_" + today + ".html", function (data) {
+    }).done(function (data, textStatus, jqXHR) {
+        $('#menu_li').html(data);
+        $(document).ready(function () {
+            $('[id^=checkbox_]').change(function () {
+                var str = "";
+                var strName = "";
+                $('input:checked').each(function () {
+                    var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                    //str = str + "'" + checkedItem + "',";
+                    str = str + checkedItem + ",";
+                    strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                });
+                str = str.substr(0, str.length - 1);
+                strName = strName.substr(0, strName.length - 1);
+                $('#leftMenuChecked').val(str);
+                $('#leftMenuCheckedName').val(strName);
+            });
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        $.get("emap_service_" + yesterday + ".html", function (data) {
+            $('#menu_li').html(data);
+            $(document).ready(function () {
+                $('[id^=checkbox_]').change(function () {
+                    var str = "";
+                    var strName = "";
+                    $('input:checked').each(function () {
+                        //console.log($('\'#'+this.id+'\'').parent().next().next().text().trim());
+                        var checkedItem = this.id.substring(this.id.length - 2, this.id.length);
+                        //str = str + "'" + checkedItem + "',";
+                        str = str + checkedItem + ",";
+                        strName = strName + $('#div_service_' + checkedItem).text().trim() + "、";
+                        //strName = strName + this.parent().next().next().text().trim() + "、";
+                        //strName = strName + $('\'#'+this.id+'\'').parent().next().next().text().trim() + "、";
+                    });
+                    str = str.substr(0, str.length - 1);
+                    strName = strName.substr(0, strName.length - 1);
+                    $('#leftMenuChecked').val(str);
+                    $('#leftMenuCheckedName').val(strName);
+                });
+            });
+        });
+    });
+    
+    $(document).ready(function () {
+        try {
+            $("body select").msDropDown();
+        } catch (e) {
+            alert(e.message);
+        }
+        eMap.init();
+
+        if (_largs.length > 0 && _largs['storeid']) {
+            Selected_Query_Type = "StoreID";
+            Selected_Store_ID = _largs['storeid'];
+        }
+        $('input[name=shop_na]').click(function () {
+            $('input[name=shop_na]').val("");
+        });
+        $('input[name=shop_no]').click(function () {
+            $('input[name=shop_no]').val("");
+        });
+        $('input[name=address]').click(function () {
+            $('input[name=address]').val("");
+        });
+        CleanItem();
+        RefleshUI();
+        $("#link_reset").bind("click", function () {
+            $('#leftMenuChecked').val('');
+            $('#leftMenuCheckedName').val('');
+            ResetCondition();
+            $('input[name=shop_na]').val("請輸入店名");
+            $('input[name=shop_no]').val("請輸入店號");
+            $('input[name=address]').val("請輸入街道名");
+            RefleshUI();
+            $("#maptable").hide();
+            //修正在按回地圖首頁時，可重新查詢點位出來 jako add 20171222 start
+            if (document.getElementById("m_map") != null) {
+                document.getElementById("search_map").removeChild(document.getElementById("m_map"));
+            }
+
+            var map = document.createElement("div");
+            map.id = "m_map";
+            map.style = "width: 100%; height: 100%;";
+            document.getElementById("search_map").appendChild(map);
+            initmap("m_map", "https://emap.pcsc.com.tw/npk/npkget.ashx", 25, 121.5, 17, NewMapcallback);
+            mapview(25, 121.5, 15);
+            //jako add 20171222 end
+        });
+        $("a[id^=maplink_]").bind("click", function () {
+            ResetCondition();
+            Selected_Query_Type = "Area";
+            Selected_Area = $(this).html();
+            RefleshUI();
+        });
+        $("#Image_store_name").bind("click", function () {
+            if ($.trim($('input[name=shop_na]').val()).length == 0 || $('input[name=shop_na]').val() == '請輸入店名') {
+                alert("請輸入店名");
+            }
+            else {
+                ResetCondition();
+                Selected_Query_Type = "StoreName";
+                Selected_Store_Name = $("input[name=shop_na]").val().replace("門市", "");
+                RefleshUI();
+            }
+        });
+        $("#Image_address").bind("click", function () {
+            if ($.trim($('input[name=address]').val()).length == 0 || $('input[name=address]').val() == '請輸入街道名') {
+                alert("請輸入街道名");
+            }
+            else {
+                ResetCondition();
+                Selected_Query_Type = "Address";
+                Selected_Address = $("input[name=address]").val();
+                RefleshUI();
+            }
+        });
+        $("#link_type").bind("click", function () {
+            ResetCondition();
+            Selected_Query_Type = "Type";
+            RefleshUI();
+        });
+        $("#Image_store_id").bind("click", function () {
+            var regExp = /^[\d]+$/;
+            if (!regExp.test($('input[name=shop_no]').val())) {
+                alert("請輸入數字");
+            }
+            else if ($('input[name=shop_no]').val().length != 6) {
+                alert("請輸入六碼店號");
+            }
+
+            else {
+                ResetCondition();
+                Selected_Query_Type = "StoreID";
+                Selected_Store_ID = $("input[name=shop_no]").val();
+                RefleshUI();
+            }
+        });
+        $("#d_list").bind("change", function () {
+            ResetCondition();
+            Selected_Query_Type = "SpecialStore";
+            Selected_Store_Type = $("#d_list").find(":selected").text();
+            RefleshUI();
+        });
+        $(document).ajaxStart($.blockUI(({ message: '<h3><img src=\"images/busy.gif\" /> 處理中...</h3>', css: { color: '#626262' } }))).ajaxStop($.unblockUI());
+    });
+</script>
