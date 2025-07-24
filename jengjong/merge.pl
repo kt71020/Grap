@@ -10,7 +10,7 @@ binmode STDERR, ":encoding(UTF-8)";
 
 use File::Glob qw(:glob);
 
-print "梁社漢排骨門市資料合併程式\n";
+print "門市資料合併程式\n";
 print "=" x 50 . "\n";
 
 # 檢查來源目錄
