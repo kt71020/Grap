@@ -1,0 +1,4 @@
+{
+    "auth_token": "your-api-token-here",
+    "api_url": "http://127.0.0.1:5120/api/v1/upload/add_shop"
+} 
