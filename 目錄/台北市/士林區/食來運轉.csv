@@ -1,21 +1,24 @@
-name,食來運轉
-city,台北市
-region,士林區
-detailed_address,小東街31號
-phone,02-2880-4931
-introduction,士林最強便當店《食來運轉》士林CP值最高的便當神店。
-order_note,點免費贈送飲料
-l1_category,A
-l2_category,1
-version,1
+---,分隔線,商店資訊---
+公司名稱,食來運轉
+城市,台北市
+鄉鎮市區,士林區
+詳細地址,小東街31號
+電話,02-2880-4931
+介紹,士林最強便當店《食來運轉》士林CP值最高的便當神店。
+訂購備註,點免費贈送飲料
+主分類,A
+次分類,1
+是否顯示,1
+強制更新,1
+版本,3
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 1,飲料,1
 2,追加,0
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 1,紅茶,0
 1,綠茶,0
 1,奶茶,0
@@ -28,7 +31,7 @@ spid,option_name,extra_price
 
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,餐點
 200,食鍋類
 300,炒飯類
@@ -36,7 +39,7 @@ category_code,category_name
 500,其他
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,1,150,香酥雞腿飯,,
 100,1,140,就是雞翅飯,,
 100,1,140,香黃燒肉飯,,
@@ -70,5 +73,5 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 

@@ -1,17 +1,19 @@
 ---,分隔線,商店資訊---
-name,隆華粵菜燒臘
-city,台北市
-region,士林區
-detailed_address,石牌路1段36號
-phone,02-2823-0019
-introduction,正宗香港師傅，道地港式口味。歡迎學生公司團體訂購！台北市其他區域大量也可外送(請來電洽詢)。
-order_note,為了您準時用餐‧請於11：00前預訂。
-l1_category,A
-l2_category,2
-version,1
+公司名稱,隆華粵菜燒臘
+城市,台北市
+鄉鎮市區,士林區
+詳細地址,石牌路1段36號
+電話,02-2823-0019
+介紹,正宗香港師傅，道地港式口味。歡迎學生公司團體訂購！台北市其他區域大量也可外送(請來電洽詢)。
+訂購備註,為了您準時用餐‧請於11：00前預訂。
+主分類,A
+次分類,2
+是否顯示,1
+強制更新,1
+版本,3
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,燒味飯
 200,炒飯、麵
 300,燴飯
@@ -23,13 +25,13 @@ category_code,category_name
 
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
-1,台式,廣式,1
-2,台式,廣式,1
+選項編號,選項名稱,必選項目
+1,台式/廣式,1
+2,台式/廣式,1
 3,飯/湯河/湯麵,1
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 1,台式,0
 1,廣式,0
 2,台式,0
@@ -40,7 +42,7 @@ spid,option_name,extra_price
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,3,95,名廚烤鴨腿,,
 100,3,95,隆華招牌飯,,
 100,3,90,現炸雞腿,,
@@ -163,5 +165,5 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 

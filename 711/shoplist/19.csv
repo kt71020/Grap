@@ -1,31 +1,34 @@
 ---,分隔線,商店資訊---
-name,統一超商股份有限公司
-city,臺北市
-region,松山區
-detailed_address,東興路8號8樓
-phone,02-27478711
-introduction,在城市 探索城事
-order_note,請電洽訂購事宜
-l1_category,C
-l2_category,3
-version,1
+申請編號,
+公司名稱,統一超商股份有限公司
+城市,臺北市
+鄉鎮市區,松山區
+詳細地址,東興路8號8樓
+電話,02-27478711
+介紹,在城市 探索城事
+訂購備註,請電洽訂購事宜
+主分類,C
+次分類,3
+是否顯示,1
+強制更新,0
+版本,4
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,CITY PRIMA
 200,CITY CAFE
 300,CITY PEARL/CITY TEA
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,中杯$80&大杯$100,精品美式(冰),,
 100,,中杯$90&大杯$110,精品拿鐵(冰),,
 100,,中杯$100&大杯$120,精品馥芮白(冰),,
@@ -85,7 +88,7 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 
 統一超商 CITY CAFE 元盛,08-7368675,屏東縣,屏東市,瑞光路二段456號1樓,22.68291,120.505295
 統一超商 CITY CAFE 公華,08-7516324,屏東縣,屏東市,龍華里龍華路152號156號1樓,22.635931,120.482686

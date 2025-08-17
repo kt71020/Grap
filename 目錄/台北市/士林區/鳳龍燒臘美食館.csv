@@ -1,23 +1,26 @@
-name,香港鳳龍燒臘美食館
-city,台北市
-region,士林區
-detailed_address,福華路128巷10號
-phone,02-2831-2367
-introduction,用心料理空格歡迎品嚐
-order_note,三個以上即可外送
-l1_category,A
-l2_category,2
-version,1
+---,分隔線,商店資訊---
+公司名稱,香港鳳龍燒臘美食館
+城市,台北市
+鄉鎮市區,士林區
+詳細地址,福華路128巷10號
+電話,02-2831-2367
+介紹,用心料理空格歡迎品嚐
+訂購備註,三個以上即可外送
+主分類,A
+次分類,2
+是否顯示,1
+強制更新,1
+版本,3
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,各式燒臘飯
 200,各式炒麵
 300,各式炒飯
@@ -28,7 +31,7 @@ category_code,category_name
 800,青菜類
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,120,玫瑰油雞腿飯,,
 100,,120,脆皮雞腿飯,,
 100,,120,美味三寶飯,,
@@ -108,5 +111,5 @@ category_code,option,price,name,product_simple,product_describe
 800,,80,炒青江菜,,
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 

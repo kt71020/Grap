@@ -1,17 +1,19 @@
 ---,分隔線,商店資訊---
-name,雞腿王
-city,台北市
-region,信義區
-detailed_address,和平東路3段391巷7弄9號1樓
-phone,27350998
-introduction,採用CAS優良肉品證號96018200，投保國泰世紀產品責任險一千萬，可配合預算製作美味便當，專辦大中型活動，可來電洽詢。
-order_note,早上10:00前訂購3個以上外送 
-l1_category,A
-l2_category,1
-version,1
+公司名稱,雞腿王
+城市,台北市
+鄉鎮市區,信義區
+詳細地址,和平東路3段391巷7弄9號1樓
+電話,27350998
+介紹,採用CAS優良肉品證號96018200，投保國泰世紀產品責任險一千萬，可配合預算製作美味便當，專辦大中型活動，可來電洽詢。
+訂購備註,早上10:00前訂購3個以上外送 
+主分類,A
+次分類,1
+是否顯示,1
+強制更新,1
+版本,3
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,特價85元雙拼
 200,雞肉類
 300,海鮮類
@@ -20,15 +22,14 @@ category_code,category_name
 600,素食類 
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
-
+選項編號,選項名稱,必選項目
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,85,雞排+烤肉飯,,
 100,,85,雞排+叉燒飯,,
 100,,85,雞排+豬柳飯,,
@@ -91,5 +92,5 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+分公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 

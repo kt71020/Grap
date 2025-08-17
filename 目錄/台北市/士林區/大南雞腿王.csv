@@ -1,17 +1,19 @@
 ---,分隔線,商店資訊---
-name,大南雞腿王 
-city,台北市
-region,士林區
-detailed_address,士林區大南路242號
-phone,0228823585
-introduction,本店已投保1000萬產品責任險，請安心食用
-order_note,便當四個可外送，午餐請於11點前訂購，晚餐請於五點前訂購。
-l1_category,A
-l2_category,1
-version,1
+公司名稱,大南雞腿王 
+城市,台北市
+鄉鎮市區,士林區
+詳細地址,士林區大南路242號
+電話,0228823585
+介紹,本店已投保1000萬產品責任險，請安心食用
+訂購備註,便當四個可外送，午餐請於11點前訂購，晚餐請於五點前訂購。
+主分類,A
+次分類,1
+是否顯示,1
+強制更新,1
+版本,3
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,雙主菜
 200,一律65元
 300,一律70元
@@ -19,15 +21,15 @@ category_code,category_name
 500,一律90元
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,85,A餐 沙茶肉片+炸雞腿,,
 100,,85,B餐 酥炸魚排+炸雞腿排,,
 100,,85,C餐 醬爆肉片+糖醋雞丁,,
@@ -57,5 +59,5 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 

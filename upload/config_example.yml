@@ -1,0 +1,76 @@
+# Dancer2 設定檔
+appname: 'CSV Upload API'
+charset: 'UTF-8'
+
+# 伺服器設定
+host: '127.0.0.1'
+port: 5120
+
+# 日誌設定
+log: 'debug'
+logger: 'console'
+
+# 序列化設定
+serializer: 'JSON'
+content_type: 'application/json; charset=UTF-8'
+
+# 上傳設定
+max_upload_size: 52428800 # 50MB
+
+# 資料庫設定 (PostgreSQL)
+plugins:
+  Database:
+    driver: 'Pg'
+    database: 'upload_db'
+    host: 'localhost'
+    port: 5432
+    username: 'upload_user'
+    password: 'upload_password'
+    connection_check_threshold: 10
+    dbi_params:
+      RaiseError: 1
+      AutoCommit: 1
+      pg_enable_utf8: 1
+
+# 或者使用 SQLite (開發環境)
+# plugins:
+#   Database:
+#     driver: 'SQLite'
+#     database: 'upload_jobs.db'
+#     on_connect_do: ['PRAGMA foreign_keys = ON']
+
+# 非同步處理設定
+async_processing:
+  # 觸發非同步處理的閾值
+  regional_threshold: 50 # 分公司數量超過 50 筆
+  total_lines_threshold: 500 # 總行數超過 500 行
+
+  # 處理時間估算參數
+  base_time: 10 # 基礎處理時間 (秒)
+  regional_time_per_item: 0.2 # 每筆分公司資料處理時間 (秒)
+  product_time_per_item: 0.1 # 每筆商品資料處理時間 (秒)
+
+  # 清理設定
+  cleanup_after_days: 7 # 7 天後清理完成的工作
+  cleanup_probability: 0.01 # 1% 機率執行清理
+
+# 安全設定
+security:
+  require_auth: true
+  valid_tokens:
+    - 'your-api-token-here'
+    - 'another-valid-token'
+
+# CORS 設定 (如果需要)
+cors:
+  enabled: true
+  allowed_origins:
+    - 'http://localhost:3000'
+    - 'https://yourdomain.com'
+  allowed_methods:
+    - 'GET'
+    - 'POST'
+    - 'OPTIONS'
+  allowed_headers:
+    - 'Authorization'
+    - 'Content-Type'
