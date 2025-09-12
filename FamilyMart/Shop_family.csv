@@ -1,17 +1,20 @@
 ---,分隔線,商店資訊---
-name,全家便利商店股份有限公司
-city,臺北市
-region,中山區
-detailed_address,中山北路二段61號7F
-phone,02-25239588
-introduction,全家就是你家
-order_note,部分商品數量有限，請以現場供應為準。自備飲料杯省5元。
-l1_category,C
-l2_category,3
-version,1
+申請編號,
+公司名稱,全家便利商店股份有限公司
+城市,臺北市
+鄉鎮市區,中山區
+詳細地址,中山北路二段61號7F
+電話,02-25239588
+介紹,全家就是你家
+訂購備註,部分商品數量有限，請以現場供應為準。自備飲料杯省5元。
+主分類,C
+次分類,3
+是否顯示,1
+強制更新,0
+版本,4
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,Let's Cafe
 200,仿手沖單品
 300,義式單品
@@ -19,7 +22,7 @@ category_code,category_name
 
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 1,冷熱飲,1
 2,冷熱飲,1
 3,冷熱飲,1
@@ -29,7 +32,7 @@ spid,option_name,single_option
 
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,選項名稱,價格
 1,冰,0
 1,熱,0
 2,冰,0
@@ -42,7 +45,7 @@ spid,option_name,extra_price
 6,野莓風味,0
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,2,L$75,經典咖啡凍拿鐵,,
 100,1&5,M$60&L$80&XL$100,單品美式,,
 100,1&5,M$70&L$90&XL$110,單品拿鐵,,

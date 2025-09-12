@@ -1,4 +1,4 @@
 {
   "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiYjg5YTEwYWUtMWNiNi00MjdhLWI0Y2UtNWViZTkwMTVmMTZmOmtldmluMDIwNCtmM0BnbWFpbC5jb206MSIsImV4cCI6MTc1NTk4Nzc1MCwiaWF0IjoxNzUzMzk1NzUwLCJuYmYiOjE3NTMzOTU3NTF9.-h8XDhnUKXC38ejlYjwOtnAbXPQWoAp1uvq5sadyIFQ",
-  "api_url": "http://127.0.0.1:5120/api/v1/upload/add_shop"
+  "api_url": "http://192.168.0.80:5120/api/v1/upload/add_shop"
 }
