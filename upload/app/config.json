@@ -1,4 +1,4 @@
 {
-  "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiYjg5YTEwYWUtMWNiNi00MjdhLWI0Y2UtNWViZTkwMTVmMTZmOmtldmluMDIwNCtmM0BnbWFpbC5jb206MSIsImV4cCI6MTc1NTk4Nzc1MCwiaWF0IjoxNzUzMzk1NzUwLCJuYmYiOjE3NTMzOTU3NTF9.-h8XDhnUKXC38ejlYjwOtnAbXPQWoAp1uvq5sadyIFQ",
-  "api_url": "http://192.168.0.80:5120/api/v1/upload/add_shop"
+  "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiNWM1NDQwMDctYTNmOC00OTQwLWEzZTAtMDBiMzFmNTIxYzYxOmtldmluMDIwNCtmMkBnbWFpbC5jb206MSIsImV4cCI6MTc3NjAwOTM0MiwiaWF0IjoxNzczNDE3MzQyLCJuYmYiOjE3NzM0MTczNDN9.t5F6F-nZ-Qi_vZ9H0tVfM04Qjqkg4TWPNZe7OUyuLy4",
+  "api_url": "https://md3-api.uirapuka.com/api/v1/upload/add_shop_sync"
 }

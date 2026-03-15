@@ -30,7 +30,8 @@ my $shop_list_file = 'Shop_list.csv';
 print "建立門市列表：$shop_list_file\n";
 
 open my $fh_list, '>:encoding(UTF-8)', $shop_list_file or die "無法建立 $shop_list_file: $!";
-print $fh_list "name,phone,city,region,detailed_address,latitude,longitude\n";
+
+# print $fh_list "name,phone,city,region,detailed_address,latitude,longitude\n";
 
 # 合併所有城市的 CSV 檔案
 my @csv_files    = bsd_glob("$csv_dir/*.csv");

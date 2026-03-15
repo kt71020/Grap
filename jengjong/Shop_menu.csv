@@ -1,29 +1,36 @@
 ---,分隔線,商店資訊---
-name,正忠排骨飯股份有限公司
-city,高雄市
-region,三民區
-detailed_address,正忠路63號1樓
-phone,07-381-1111
-introduction,在地人的口味，出外人的便當
-order_note,
-l1_category,A
-l2_category,1
-version,1
+申請編號,
+公司名稱,正忠排骨飯股份有限公司
+城市,高雄市
+鄉鎮市區,三民區
+詳細地址,正忠路63號1樓
+電話,07-381-1111
+網址,
+聯絡人,
+聯絡人電話,
+介紹,在地人的口味，出外人的便當
+訂購備註,
+進件管道,
+主分類,A
+次分類,1
+是否顯示,0
+強制更新,1
+版本,4
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,經典飯包
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,75,三杯雞肉飯,,
 100,,75,宮保雞丁飯,,
 100,,80,糖醋小排飯,,
@@ -46,7 +53,7 @@ category_code,option,price,name,product_simple,product_describe
 100,,130,虱目魚肚飯,,
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+分公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 正忠排骨飯 學士店,04-2235-9998,台中市,北區,學士路210號,,
 正忠排骨飯 東興店,04-2472-6998,台中市,南屯區,東興路二段356號,,
 正忠排骨飯 青海店,04-2315-2668,台中市,西屯區,青海路一段36號,,

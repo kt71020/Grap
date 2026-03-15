@@ -1,0 +1,77 @@
+| 茶飲名稱 | 小杯 (M) | 大杯 (L) |
+|----------|----------|----------|
+| 茉莉綠茶 / 阿薩姆紅茶 | 30 | 35 |
+| 四季春青茶 | 30 | 35 |
+| 黃金烏龍 | 30 | 35 |
+| 珍波椰青茶 | 35 | 45 |
+| 波霸紅 / 綠 | 35 | 45 |
+| 燕麥紅 / 綠 | 35 | 45 |
+| 微檸檬紅 / 青 | 35 | 45 |
+| 麵茶紅 / 烏 | 40 | 55 |
+| 檸檬綠 | 40 | 55 |
+| 梅の綠 | 40 | 55 |
+| 8冰綠 / 情人茶 | 40 | 55 |
+| 多多綠 / 蜂蜜綠 | 40 | 55 |
+| 旺來紅 / 青 | 40 | 55 |
+| 柚子紅 / 烏 | 40 | 55 |
+| 鮮柚綠 (季節限定) | 50 | 65 |
+
+
+
+| 品名 | 英文名稱 | 40 | 55 |
+|------|----------|----|----|
+| 奶茶 | Milk Tea | 40 | 55 |
+| 奶綠 | Green Milk Tea | 40 | 55 |
+| 烏龍奶 | Oolong Milk Tea | 40 | 55 |
+| 椰果奶茶 | Coconut Jelly Milk Tea | 40 | 55 |
+| 珍珠奶茶 | Mini Bubble Milk Tea | 40 | 55 |
+| 波霸奶茶 | Bubble Milk Tea | 40 | 55 |
+| 燕麥奶茶 | Milk Tea With Oat | 40 | 55 |
+| 蜂蜜奶茶 | Honey Milk Tea | 50 | 65 |
+| 布丁奶茶 | Pudding Milk Tea | 50 | 65 |
+| 紅茶瑪奇朵 鮮奶油 | Black Tea Macchiato (Fresh Cream) | 40 | 55 |
+| 青茶瑪奇朵 鮮奶油 | Four Season Tea Macchiato (Fresh Cream) | 40 | 55 |
+| 阿華田 | Ovaltine | 40 | 55 |
+
+
+| 品項 | M | L |
+|------|---|---|
+| 紅茶拿鐵 (Black Tea Latte) | 50 | 65 |
+| 綠茶拿鐵 (Green Tea Latte) | 50 | 65 |
+| 重焙烏龍拿鐵 (Roasted Oolong Tea Latte) | 50 | 65 |
+| 珍珠紅茶拿鐵 (Mini Bubble Black Tea Latte) | 50 | 65 |
+| 波霸紅茶拿鐵 (Bubble Black Tea Latte) | 50 | 65 |
+| 燕麥紅茶拿鐵 (Black Tea Latte With Oat) | 50 | 65 |
+| 波霸綠茶拿鐵 (Bubble Green Tea Latte) | 50 | 65 |
+| 燕麥重焙烏龍拿鐵 (Roasted Oolong Tea Latte With Oat) | 50 | 65 |
+| 布丁紅茶拿鐵 (Pudding Black Tea Latte) | 55 | 75 |
+| 阿華田拿鐵 (Ovaltine Latte) | 50 | 65 |
+| 燕麥阿華田拿鐵 (Ovaltine Latte With Oat) | 50 | 65 |
+| 麵茶紅茶拿鐵 (Roasted Wheat Flour Black Tea Latte) | 55 | 75 |
+
+
+| 飲品名稱 | 價格 (M) | 價格 (L) |
+|----------|-----------|-----------|
+| 蜜茶     | 40        | 55        |
+| 8冰茶 / 柚子茶 | 40        | 55        |
+| 檸檬汁   | 50        | 65        |
+| 葡萄柚汁 (季節限定) | 50        | 65        |
+| 金桔檸檬 / 檸檬梅汁 | 50        | 65        |
+| 檸檬多多 | 55        | 75        |
+| 葡萄柚多多 (季節限定) | 55        | 75        |
+
+| 商品名稱 | 描述 | M 價格 | L 價格 |
+|----------|------|--------|--------|
+| 冰淇淋紅茶 | 香草 | 40 | 55 |
+|          | Vanilla Ice Cream Black Tea |    |      |
+| 芒果青 |  | 40 | 55 |
+|          | Mango Ice Cream Four Season Tea |    |      |
+| 荔枝烏龍 |  | 40 | 55 |
+|          | Lychee Ice Cream Oolong Tea |    |      |
+| 冰淇淋奶茶 | 香草 | 50 | 65 |
+|          | Vanilla Ice Cream Milk Tea |    |      |
+| 冰淇淋紅茶拿鐵 | 香草 | 55 | 75 |
+|          | Vanilla Ice Cream Black Tea Latte |    |      |
+| 冰淇淋麵茶紅茶拿鐵 | 香草 | 60 | 80 |
+|          | Vanilla Ice Cream & Roasted Wheat Flour Black Tea Latte |    |      |
+

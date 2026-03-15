@@ -20,7 +20,10 @@ my $DESCRIPTION = "商店 CSV 檔案上傳程式";
 
 # 預設設定
 my $DEFAULT_CONFIG_FILE = "config.json";
-my $API_URL             = "http://dev.uirapuka.com:5120/api/v1/upload/add_shop_sync";
+
+# my $API_URL = "http://192.168.0.80:5120/api/v1/upload/add_shop_sync";
+
+my $API_URL = "https://md3-api.uirapuka.com/api/v1/upload/add_shop_sync";
 my $csv_file;
 my $directory;
 my $auth_token;
@@ -28,7 +31,7 @@ my $config_file = $DEFAULT_CONFIG_FILE;
 my $help;
 my $verbose;
 my $timeout       = 600;    # 預設 10 分鐘逾時
-my $poll_interval = 10;     # 輪詢間隔秒數
+my $poll_interval = 30;     # 輪詢間隔秒數
 my $recursive     = 0;      # 是否遞迴搜尋子目錄
 
 # 解析命令行參數
@@ -56,7 +59,9 @@ my $config = load_config($config_file);
 
 # 設定優先權：命令行參數 > 設定檔 > 預設值
 $auth_token = $auth_token || $config->{auth_token} || $ENV{API_TOKEN};
-$API_URL    = $API_URL    || $config->{api_url}    || $API_URL;
+$API_URL    = $config->{api_url} || $API_URL;
+
+print "API_URL: $API_URL\n";
 
 # 檢查必要參數
 unless ( $csv_file || $directory ) {

@@ -1,17 +1,25 @@
 ---,分隔線,商店資訊---
-name,八方雲集餐飲股份有限公司
-city,新北市
-region,淡水區
-detailed_address,中正東路2段27之1號18樓
-phone,02-26234588
-introduction,
-order_note,若需訂購30個餐點以上，請於前一天或當日早上10點30分前訂餐
-l1_category,A
-l2_category,1
-version,1
+申請編號,
+公司名稱,八方雲集餐飲股份有限公司
+城市,新北市
+鄉鎮市區,淡水區
+詳細地址,中正東路2段27之1號18樓
+電話,02-26234588
+網址,
+聯絡人,
+聯絡人電話,
+介紹,
+訂購備註,若需訂購30個餐點以上，請於前一天或當日早上10點30分前訂餐
+進件管道,
+主分類,A
+次分類,1
+是否顯示,1
+強制更新,1
+版本,4
+
 
 ---,分隔線,商品分類代碼,---
-category_code,category_name
+商品分類編號,商品分類名稱
 100,飯類
 200,麵類
 300,小菜
@@ -21,15 +29,15 @@ category_code,category_name
 
 
 ---,分隔線,共用選項代碼,---
-spid,option_name,single_option
+選項編號,選項名稱,必選項目
 
 
 ---,分隔線,共用選項價格代碼,---
-spid,option_name,extra_price
+選項編號,名稱,價格
 
 
 ---,分隔線,商品資料---
-category_code,option,price,name,product_simple,product_describe
+商品分類編號,選項,價格,名稱,簡單描述,詳細描述
 100,,99,椒鹽雞菲力排飯 ,,
 100,,99,祕醬雞菲力排飯,,
 100,,125,炸排骨飯,,
@@ -87,7 +95,7 @@ category_code,option,price,name,product_simple,product_describe
 
 
 ---,分隔線,分公司基本資料,---
-name,phone,city,region,detailed_address,latitude,longitude
+分公司名稱,電話,城市,鄉鎮市區,詳細地址,緯度,經度
 梁社漢排骨 南投南陽店 ,04-9220-2727,南投縣,南投市,南陽路476號,,
 梁社漢排骨 草屯虎山店 ,04-9230-5222,南投縣,草屯鎮,虎山路696、698號,,
 梁社漢排骨 南投埔里店 ,04-9290-3037,南投縣,埔里鎮,南興街262號,,

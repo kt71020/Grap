@@ -1,4 +1,5 @@
 {
-    "auth_token": "your-api-token-here",
-    "api_url": "http://127.0.0.1:5120/api/v1/upload/add_shop"
-} 
+  "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjoiMzRjNTViY2QtMjNhYy00NGQyLTk5ZWUtMWUxZDk5YmZhZTJmOmt0NzEwMjBAZ21haWwuY29tOjEiLCJleHAiOjE3NjAyNDQ5ODQsImlhdCI6MTc1NzY1Mjk4NCwibmJmIjoxNzU3NjUyOTg1fQ.T8huJvdchGlFbv-JvNpG2SQJYHZzG7RwQg1vOlxQeug",
+  "api_url": "http://192.168.0.80:5120/api/v1/upload/add_shop_sync"
+   "api_url": "https://md3-api.uirapuka.com/api/v1/upload/add_shop_sync"
+}
